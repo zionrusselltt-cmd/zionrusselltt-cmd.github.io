@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy - VIKI Books</title><link rel="icon" href="/img/viki-mark.svg" type="image/svg+xml">
+<style>
+@font-face { font-family: "Poppins"; src: url("/fonts/poppins-medium.woff") format("woff"); font-weight: 500 600; font-display: swap; }
+@font-face { font-family: "Poppins"; src: url("/fonts/poppins-bold.woff") format("woff"); font-weight: 700 800; font-display: swap; }
+:root {
+  --ink: #1B2140; --ink-2: #4A5270; --muted: #6B7391; --paper: #F6F8FD; --surface: #FFFFFF; --rule: #E2E7F3;
+  --orange: #FF7A45; --blue: #3D7BFF; --blue-2: #2A5FD6; --teal: #0E8F9C;
+  --display: "Poppins", "Segoe UI", system-ui, sans-serif;
+  --text: "Segoe UI Variable Text", "Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { animation: none !important; transition: none !important; } }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 17px/1.6 var(--text); -webkit-font-smoothing: antialiased; }
+img { max-width: 100%; height: auto; display: block; }
+a { color: var(--blue-2); }
+:focus-visible { outline: 3px solid var(--orange); outline-offset: 3px; border-radius: 6px; }
+.wrap { width: min(1160px, 100% - 40px); margin-inline: auto; }
+h1, h2, h3 { font-family: var(--display); letter-spacing: -.025em; line-height: 1.1; margin: 0; }
+h1 { font-size: clamp(38px, 6vw, 68px); font-weight: 700; }
+h2 { font-size: clamp(28px, 3.6vw, 42px); font-weight: 700; }
+h3 { font-size: 22px; font-weight: 600; letter-spacing: -.015em; }
+p { margin: 0; }
+.lead { font-size: 20px; color: var(--ink-2); max-width: 34em; }
+
+/* header */
+.top { position: sticky; top: 0; z-index: 10; background: rgba(246, 248, 253, .92); backdrop-filter: blur(10px); border-bottom: 1px solid var(--rule); }
+.top .wrap { display: flex; align-items: center; gap: 28px; height: 68px; }
+.top .logo img { height: 26px; width: auto; }
+.top nav { display: flex; gap: 22px; margin-left: auto; font-size: 15px; }
+.top nav a { color: var(--ink-2); text-decoration: none; }
+.top nav a:hover { color: var(--ink); }
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; font: 600 16px/1 var(--display); text-decoration: none; padding: 15px 24px; border-radius: 12px; border: 2px solid transparent; cursor: pointer; }
+.btn.go { background: var(--orange); color: #fff; }
+.btn.go:hover { background: #F2662E; }
+.btn.line { border-color: var(--ink); color: var(--ink); background: transparent; }
+.btn.line:hover { background: var(--ink); color: #fff; }
+.btn.small { padding: 10px 16px; font-size: 14px; border-radius: 10px; }
+.signin { font-size: 15px; color: var(--ink-2); text-decoration: none; }
+@media (max-width: 860px) { .top nav { display: none; } .top .wrap { gap: 14px; } .top .right { margin-left: auto; } }
+
+/* hero */
+.hero { padding: 72px 0 0; overflow: hidden; }
+.hero .wrap { display: grid; grid-template-columns: 1fr; gap: 26px; }
+.hero h1 { max-width: 13em; }
+.hero h1 .dot { color: var(--orange); }
+.hero .acts { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; margin-top: 6px; }
+.hero .fine { font-size: 14px; color: var(--muted); }
+.shot { border-radius: 16px; background: #fff; box-shadow: 0 1px 2px rgba(27, 33, 64, .06), 0 24px 60px -20px rgba(27, 33, 64, .28); overflow: hidden; border: 1px solid var(--rule); }
+.hero .shot { margin-top: 38px; transform: perspective(1800px) rotateX(6deg); transform-origin: top center; margin-bottom: -60px; }
+
+/* the dates strip: the thing nobody else shows */
+.dates { background: var(--ink); color: #fff; padding: 110px 0 64px; }
+.dates h2 { color: #fff; max-width: 20em; }
+.dates .sub { color: #B9C1DE; margin-top: 12px; max-width: 40em; }
+.cal { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; margin-top: 40px; border-top: 1px solid #343C63; }
+.cal div { padding: 22px 22px 6px 0; border-right: 1px solid #343C63; }
+.cal div + div { padding-left: 22px; }
+.cal div:last-child { border-right: 0; }
+.cal b { display: block; font: 700 34px/1 var(--display); letter-spacing: -.03em; color: #fff; }
+.cal b small { font-size: 16px; font-weight: 500; color: var(--orange); letter-spacing: 0; margin-left: 4px; }
+.cal span { display: block; margin-top: 12px; font-size: 15px; color: #C9D0EA; line-height: 1.5; }
+@media (max-width: 860px) { .cal { grid-template-columns: 1fr 1fr; } .cal div:nth-child(2) { border-right: 0; } .cal div:nth-child(3) { padding-left: 0; } .cal div:nth-child(n+3) { border-top: 1px solid #343C63; } }
+@media (max-width: 520px) { .cal { grid-template-columns: 1fr; } .cal div { border-right: 0 !important; padding-left: 0 !important; } .cal div + div { border-top: 1px solid #343C63; } }
+
+/* features: text beside a real screen */
+section { scroll-margin-top: 80px; }
+.feat { padding: 88px 0 24px; }
+.feat > .wrap > h2 { max-width: 16em; }
+.row { display: grid; grid-template-columns: 5fr 7fr; gap: 56px; align-items: center; padding: 56px 0; border-bottom: 1px solid var(--rule); }
+.row:last-child { border-bottom: 0; }
+.row.flip { grid-template-columns: 7fr 5fr; }
+.row.flip .words { order: 2; }
+.row .words p { margin-top: 14px; color: var(--ink-2); }
+.row .words ul { margin: 16px 0 0; padding: 0; list-style: none; }
+.row .words li { padding: 7px 0 7px 26px; position: relative; color: var(--ink-2); }
+.row .words li::before { content: ""; position: absolute; left: 4px; top: 16px; width: 8px; height: 8px; border-radius: 50%; background: var(--orange); }
+.tag { display: inline-block; font: 600 13px/1 var(--display); color: var(--teal); background: #E0F5F6; padding: 6px 10px; border-radius: 8px; margin-bottom: 14px; }
+@media (max-width: 860px) { .row, .row.flip { grid-template-columns: 1fr; gap: 26px; padding: 40px 0; } .row.flip .words { order: 0; } }
+
+/* course */
+.course { padding: 72px 0; }
+.course .wrap { display: grid; grid-template-columns: 7fr 5fr; gap: 48px; align-items: center; }
+.course a.thumb { display: block; border-radius: 16px; overflow: hidden; box-shadow: 0 24px 60px -24px rgba(27, 33, 64, .45); position: relative; }
+.course a.thumb::after { content: ""; position: absolute; left: 50%; top: 50%; width: 84px; height: 84px; margin: -42px 0 0 -42px; border-radius: 50%; background: rgba(255, 122, 69, .95) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M9 6l10 6-10 6z' fill='white'/%3E%3C/svg%3E") center/38px no-repeat; }
+.course ol { margin: 18px 0 0; padding-left: 22px; color: var(--ink-2); columns: 1; }
+.course ol li { padding: 3px 0; }
+.course ol b { font-family: var(--display); font-weight: 600; color: var(--ink); font-size: 15px; margin-right: 6px; }
+@media (max-width: 860px) { .course .wrap { grid-template-columns: 1fr; } }
+
+/* safety */
+.safe { background: var(--surface); border-block: 1px solid var(--rule); padding: 84px 0; }
+.safe .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 36px 48px; margin-top: 40px; }
+.safe .grid div { border-top: 3px solid var(--ink); padding-top: 16px; }
+.safe .grid p { margin-top: 8px; color: var(--ink-2); font-size: 16px; }
+.honest { margin-top: 44px; padding: 18px 22px; border-left: 4px solid var(--orange); background: #FFF5EF; border-radius: 0 12px 12px 0; color: var(--ink); max-width: 46em; }
+@media (max-width: 860px) { .safe .grid { grid-template-columns: 1fr; } }
+
+/* prices */
+.prices { padding: 88px 0; }
+.plans { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 40px; }
+.plan { background: var(--surface); border: 1px solid var(--rule); border-radius: 20px; padding: 32px; display: flex; flex-direction: column; gap: 16px; }
+.plan.firm { background: var(--ink); color: #fff; border-color: var(--ink); }
+.plan .who { font: 600 18px/1.2 var(--display); }
+.plan .amt { font: 700 56px/1 var(--display); letter-spacing: -.04em; }
+.plan .amt small { font: 500 17px/1.3 var(--text); letter-spacing: 0; color: var(--muted); display: block; margin-top: 8px; }
+.plan.firm .amt small { color: #B9C1DE; }
+.plan ul { margin: 0; padding-left: 20px; }
+.plan li { padding: 3px 0; }
+.plan.firm li { color: #DDE2F3; }
+.plan .btn { margin-top: auto; align-self: flex-start; }
+.addon { margin-top: 24px; display: flex; flex-wrap: wrap; gap: 8px 24px; align-items: baseline; padding: 20px 24px; border: 1px dashed #C7CFE5; border-radius: 16px; color: var(--ink-2); }
+.addon b { font-family: var(--display); color: var(--ink); }
+@media (max-width: 760px) { .plans { grid-template-columns: 1fr; } }
+
+/* contact + footer */
+.contact { background: var(--ink); color: #fff; padding: 84px 0; }
+.contact .wrap { display: grid; grid-template-columns: 1.2fr 1fr; gap: 40px; align-items: end; }
+.contact p { color: #C9D0EA; margin-top: 14px; max-width: 30em; }
+.contact .ways { display: grid; gap: 12px; }
+.contact .ways a { display: flex; justify-content: space-between; align-items: center; gap: 12px; color: #fff; text-decoration: none; padding: 18px 20px; border: 1px solid #39416A; border-radius: 14px; font-size: 17px; }
+.contact .ways a:hover { border-color: var(--orange); }
+.contact .ways a span { color: #9AA3C7; font-size: 14px; }
+@media (max-width: 860px) { .contact .wrap { grid-template-columns: 1fr; } }
+footer { background: #141933; color: #9AA3C7; font-size: 14px; padding: 26px 0; }
+footer .wrap { display: flex; flex-wrap: wrap; gap: 10px 26px; align-items: center; }
+footer a { color: #C9D0EA; text-decoration: none; }
+footer .grow { flex: 1; }
+
+.doc { padding: 64px 0 88px; } .doc .wrap { max-width: 760px; } .doc h1 { font-size: clamp(34px, 5vw, 48px); }
+.doc h2 { font-size: 24px; margin-top: 40px; } .doc p, .doc li { color: var(--ink-2); } .doc p { margin-top: 12px; } .doc ul { padding-left: 22px; } .doc li { padding: 3px 0; }
+.doc .when { color: var(--muted); font-size: 15px; margin-top: 10px; }
+</style></head><body>
+<header class="top"><div class="wrap"><a class="logo" href="/books/" aria-label="VIKI Books home"><img src="/img/viki-books-logo.svg" alt="viki.books"></a>
+<div class="right" style="display:flex;gap:16px;align-items:center;margin-left:auto"><a class="signin" href="https://books.vikisystems.live/">Sign in</a><a class="btn go small" href="https://books.vikisystems.live/#/signup">Start free trial</a></div></div></header>
+<main class="doc"><div class="wrap"><h1>Privacy</h1><p class="when">Last updated 22 October 2026</p>
+<p>This page says, in plain words, what VIKI Systems keeps about you and your business when you use VIKI Books, and what we do with it.</p>
+<h2>What we keep</h2><ul>
+<li>Your account: your name, email address, phone number and password (stored scrambled, so nobody can read it).</li>
+<li>Your books: everything you or your team enter or import, such as customers, suppliers, invoices, bills, bank lines, payroll and tax figures.</li>
+<li>Files you attach, such as receipts, bills and documents.</li>
+<li>A record of sign-ins and of every change made in your books (the audit trail), so you can see who did what.</li></ul>
+<h2>Where it is kept</h2><p>On a secure server we rent from Hetzner, a hosting company. A full copy is made every night and kept for 30 days.</p>
+<h2>Who can see it</h2><ul>
+<li>You, and the people you give access to, each limited to what you choose.</li>
+<li>If an accounting firm looks after your books, the people at that firm you or they give access to.</li>
+<li>VIKI Systems sees your account details, plan and how much you use the system. We do not look inside your books unless you ask us to help you with something.</li></ul>
+<h2>The AI assistant (Ask VIKI)</h2><p>Ask VIKI is an add-on that is off unless switched on for your account. When you use it, your question and the figures needed to answer it, or the receipt photo you ask it to read, are sent to Anthropic, the company that provides the AI, to produce the answer. Nothing is sent when you do not use it.</p>
+<h2>What we never do</h2><ul><li>We do not sell your data or share it for advertising.</li><li>We do not use your books for anything except running VIKI Books for you.</li></ul>
+<h2>Your choices</h2><ul>
+<li>Download a full backup, or export everything to Excel, at any time from Settings.</li>
+<li>Ask us to correct your account details, or to delete your account and books when you leave. Copies in the nightly backups disappear within 30 days.</li></ul>
+<h2>Questions</h2><p>WhatsApp 1-868-787-7871 or email <a href="mailto:vikisystem.live@gmail.com">vikisystem.live@gmail.com</a>.</p></div></main>
+<footer><div class="wrap"><span class="grow">&copy; 2026 VIKI Systems, Trinidad and Tobago.</span><a href="/books/privacy.html">Privacy</a><a href="/books/terms.html">Terms</a><a href="/books/">Home</a></div></footer>
+</body></html>

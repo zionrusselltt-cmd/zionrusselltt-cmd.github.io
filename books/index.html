@@ -1,0 +1,362 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>VIKI Books: accounting built for Trinidad and Tobago</title>
+<meta name="description" content="Invoices, bank matching, payroll with NIS, PAYE and health surcharge, and VAT laid out like the BIR form. For Trinidad and Tobago businesses and the accountants who look after them. 30-day free trial.">
+<meta property="og:title" content="VIKI Books: accounting built for Trinidad and Tobago">
+<meta property="og:description" content="Bank matching, payroll with NIS and PAYE, VAT in the BIR layout, room tax for guest houses. 30-day free trial.">
+<meta property="og:image" content="https://books.vikisystems.live/img/share.png">
+<meta property="og:type" content="website">
+<link rel="icon" href="/img/viki-mark.svg" type="image/svg+xml">
+<style>
+@font-face { font-family: "Poppins"; src: url("/fonts/poppins-medium.woff") format("woff"); font-weight: 500 600; font-display: swap; }
+@font-face { font-family: "Poppins"; src: url("/fonts/poppins-bold.woff") format("woff"); font-weight: 700 800; font-display: swap; }
+:root {
+  --ink: #1B2140; --ink-2: #4A5270; --muted: #6B7391; --paper: #F6F8FD; --surface: #FFFFFF; --rule: #E2E7F3;
+  --orange: #FF7A45; --blue: #3D7BFF; --blue-2: #2A5FD6; --teal: #0E8F9C;
+  --display: "Poppins", "Segoe UI", system-ui, sans-serif;
+  --text: "Segoe UI Variable Text", "Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { animation: none !important; transition: none !important; } }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 17px/1.6 var(--text); -webkit-font-smoothing: antialiased; }
+img { max-width: 100%; height: auto; display: block; }
+a { color: var(--blue-2); }
+:focus-visible { outline: 3px solid var(--orange); outline-offset: 3px; border-radius: 6px; }
+.wrap { width: min(1160px, 100% - 40px); margin-inline: auto; }
+h1, h2, h3 { font-family: var(--display); letter-spacing: -.025em; line-height: 1.1; margin: 0; }
+h1 { font-size: clamp(38px, 6vw, 68px); font-weight: 700; }
+h2 { font-size: clamp(28px, 3.6vw, 42px); font-weight: 700; }
+h3 { font-size: 22px; font-weight: 600; letter-spacing: -.015em; }
+p { margin: 0; }
+.lead { font-size: 20px; color: var(--ink-2); max-width: 34em; }
+
+/* header */
+.top { position: sticky; top: 0; z-index: 10; background: rgba(246, 248, 253, .92); backdrop-filter: blur(10px); border-bottom: 1px solid var(--rule); }
+.top .wrap { display: flex; align-items: center; gap: 28px; height: 68px; }
+.top .logo img { height: 26px; width: auto; }
+.top nav { display: flex; gap: 22px; margin-left: auto; font-size: 15px; }
+.top nav a { color: var(--ink-2); text-decoration: none; }
+.top nav a:hover { color: var(--ink); }
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; font: 600 16px/1 var(--display); text-decoration: none; padding: 15px 24px; border-radius: 12px; border: 2px solid transparent; cursor: pointer; }
+.btn.go { background: var(--orange); color: #fff; }
+.btn.go:hover { background: #F2662E; }
+.btn.line { border-color: var(--ink); color: var(--ink); background: transparent; }
+.btn.line:hover { background: var(--ink); color: #fff; }
+.btn.small { padding: 10px 16px; font-size: 14px; border-radius: 10px; }
+.signin { font-size: 15px; color: var(--ink-2); text-decoration: none; }
+@media (max-width: 860px) { .top nav { display: none; } .top .wrap { gap: 14px; } .top .right { margin-left: auto; } }
+
+/* hero */
+.hero { padding: 72px 0 0; overflow: hidden; }
+.hero .wrap { display: grid; grid-template-columns: 1fr; gap: 26px; }
+.hero h1 { max-width: 13em; }
+.hero h1 .dot { color: var(--orange); }
+.hero .acts { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; margin-top: 6px; }
+.hero .fine { font-size: 14px; color: var(--muted); }
+.shot { border-radius: 16px; background: #fff; box-shadow: 0 1px 2px rgba(27, 33, 64, .06), 0 24px 60px -20px rgba(27, 33, 64, .28); overflow: hidden; border: 1px solid var(--rule); }
+.hero .shot { margin-top: 38px; transform: perspective(1800px) rotateX(6deg); transform-origin: top center; margin-bottom: -60px; }
+
+/* the dates strip: the thing nobody else shows */
+.dates { background: var(--ink); color: #fff; padding: 110px 0 64px; }
+.dates h2 { color: #fff; max-width: 20em; }
+.dates .sub { color: #B9C1DE; margin-top: 12px; max-width: 40em; }
+.cal { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; margin-top: 40px; border-top: 1px solid #343C63; }
+.cal div { padding: 22px 22px 6px 0; border-right: 1px solid #343C63; }
+.cal div + div { padding-left: 22px; }
+.cal div:last-child { border-right: 0; }
+.cal b { display: block; font: 700 34px/1 var(--display); letter-spacing: -.03em; color: #fff; }
+.cal b small { font-size: 16px; font-weight: 500; color: var(--orange); letter-spacing: 0; margin-left: 4px; }
+.cal span { display: block; margin-top: 12px; font-size: 15px; color: #C9D0EA; line-height: 1.5; }
+@media (max-width: 860px) { .cal { grid-template-columns: 1fr 1fr; } .cal div:nth-child(2) { border-right: 0; } .cal div:nth-child(3) { padding-left: 0; } .cal div:nth-child(n+3) { border-top: 1px solid #343C63; } }
+@media (max-width: 520px) { .cal { grid-template-columns: 1fr; } .cal div { border-right: 0 !important; padding-left: 0 !important; } .cal div + div { border-top: 1px solid #343C63; } }
+
+/* features: text beside a real screen */
+section { scroll-margin-top: 80px; }
+.feat { padding: 88px 0 24px; }
+.feat > .wrap > h2 { max-width: 16em; }
+.row { display: grid; grid-template-columns: 5fr 7fr; gap: 56px; align-items: center; padding: 56px 0; border-bottom: 1px solid var(--rule); }
+.row:last-child { border-bottom: 0; }
+.row.flip { grid-template-columns: 7fr 5fr; }
+.row.flip .words { order: 2; }
+.row .words p { margin-top: 14px; color: var(--ink-2); }
+.row .words ul { margin: 16px 0 0; padding: 0; list-style: none; }
+.row .words li { padding: 7px 0 7px 26px; position: relative; color: var(--ink-2); }
+.row .words li::before { content: ""; position: absolute; left: 4px; top: 16px; width: 8px; height: 8px; border-radius: 50%; background: var(--orange); }
+.tag { display: inline-block; font: 600 13px/1 var(--display); color: var(--teal); background: #E0F5F6; padding: 6px 10px; border-radius: 8px; margin-bottom: 14px; }
+@media (max-width: 860px) { .row, .row.flip { grid-template-columns: 1fr; gap: 26px; padding: 40px 0; } .row.flip .words { order: 0; } }
+
+/* course */
+.course { padding: 72px 0; }
+.course .wrap { display: grid; grid-template-columns: 7fr 5fr; gap: 48px; align-items: center; }
+.course a.thumb { display: block; border-radius: 16px; overflow: hidden; box-shadow: 0 24px 60px -24px rgba(27, 33, 64, .45); position: relative; }
+.course a.thumb::after { content: ""; position: absolute; left: 50%; top: 50%; width: 84px; height: 84px; margin: -42px 0 0 -42px; border-radius: 50%; background: rgba(255, 122, 69, .95) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M9 6l10 6-10 6z' fill='white'/%3E%3C/svg%3E") center/38px no-repeat; }
+.course ol { margin: 18px 0 0; padding: 0; list-style: none; color: var(--ink-2); }
+.course ol li { padding: 3px 0; }
+.course ol b { font-family: var(--display); font-weight: 600; color: var(--ink); font-size: 15px; margin-right: 6px; }
+@media (max-width: 860px) { .course .wrap { grid-template-columns: 1fr; } }
+
+/* safety */
+.safe { background: var(--surface); border-block: 1px solid var(--rule); padding: 84px 0; }
+.safe .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 36px 48px; margin-top: 40px; }
+.safe .grid div { border-top: 3px solid var(--ink); padding-top: 16px; }
+.safe .grid p { margin-top: 8px; color: var(--ink-2); font-size: 16px; }
+.honest { margin-top: 44px; padding: 18px 22px; border-left: 4px solid var(--orange); background: #FFF5EF; border-radius: 0 12px 12px 0; color: var(--ink); max-width: 46em; }
+@media (max-width: 860px) { .safe .grid { grid-template-columns: 1fr; } }
+
+/* prices */
+.prices { padding: 88px 0; }
+.plans { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 40px; }
+.plan { background: var(--surface); border: 1px solid var(--rule); border-radius: 20px; padding: 32px; display: flex; flex-direction: column; gap: 16px; }
+.plan.firm { background: var(--ink); color: #fff; border-color: var(--ink); }
+.plan .who { font: 600 18px/1.2 var(--display); }
+.plan .amt { font: 700 56px/1 var(--display); letter-spacing: -.04em; }
+.plan .amt small { font: 500 17px/1.3 var(--text); letter-spacing: 0; color: var(--muted); display: block; margin-top: 8px; }
+.plan.firm .amt small { color: #B9C1DE; }
+.plan ul { margin: 0; padding-left: 20px; }
+.plan li { padding: 3px 0; }
+.plan.firm li { color: #DDE2F3; }
+.plan .btn { margin-top: auto; align-self: flex-start; }
+.addon { margin-top: 24px; display: flex; flex-wrap: wrap; gap: 8px 24px; align-items: baseline; padding: 20px 24px; border: 1px dashed #C7CFE5; border-radius: 16px; color: var(--ink-2); }
+.addon b { font-family: var(--display); color: var(--ink); }
+@media (max-width: 760px) { .plans { grid-template-columns: 1fr; } }
+
+/* contact + footer */
+.contact { background: var(--ink); color: #fff; padding: 84px 0; }
+.contact .wrap { display: grid; grid-template-columns: 1.2fr 1fr; gap: 40px; align-items: end; }
+.contact p { color: #C9D0EA; margin-top: 14px; max-width: 30em; }
+.contact .ways { display: grid; gap: 12px; }
+.contact .ways a { display: flex; justify-content: space-between; align-items: center; gap: 12px; color: #fff; text-decoration: none; padding: 18px 20px; border: 1px solid #39416A; border-radius: 14px; font-size: 17px; }
+.contact .ways a:hover { border-color: var(--orange); }
+.contact .ways a span { color: #9AA3C7; font-size: 14px; }
+@media (max-width: 860px) { .contact .wrap { grid-template-columns: 1fr; } }
+footer { background: #141933; color: #9AA3C7; font-size: 14px; padding: 26px 0; }
+footer .wrap { display: flex; flex-wrap: wrap; gap: 10px 26px; align-items: center; }
+footer a { color: #C9D0EA; text-decoration: none; }
+footer .grow { flex: 1; }
+.compare { padding: 84px 0; }
+.cmp { margin-top: 28px; background: var(--surface); border: 1px solid var(--rule); border-radius: 20px; padding: 28px; max-width: 860px; }
+.cmp-tabs { display: inline-flex; gap: 6px; background: var(--paper); border: 1px solid var(--rule); border-radius: 12px; padding: 4px; }
+.cmp-tabs button { font: 600 15px/1 var(--display); border: 0; background: transparent; color: var(--ink-2); padding: 11px 16px; border-radius: 9px; cursor: pointer; }
+.cmp-tabs button[aria-selected="true"] { background: var(--ink); color: #fff; }
+.cmp-body { margin-top: 22px; }
+.cmp-n { display: flex; align-items: center; gap: 12px; font-weight: 600; flex-wrap: wrap; }
+.cmp-n input { font: 600 18px/1 var(--display); width: 120px; padding: 10px 12px; border: 2px solid var(--rule); border-radius: 10px; color: var(--ink); }
+.cmp-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 18px; }
+.cmp-col { border-radius: 16px; padding: 20px; border: 1px solid var(--rule); }
+.cmp-col span { display: block; font-size: 15px; color: var(--ink-2); }
+.cmp-col b { display: block; font: 700 36px/1.1 var(--display); letter-spacing: -.03em; margin-top: 6px; }
+.cmp-col small { color: var(--muted); font-size: 14px; }
+.cmp-col.qb b { color: var(--ink-2); }
+.cmp-col.vk { background: var(--ink); border-color: var(--ink); }
+.cmp-col.vk span, .cmp-col.vk small { color: #B9C1DE; }
+.cmp-col.vk b { color: #fff; }
+.cmp-save { margin-top: 18px; font-size: 19px; }
+.cmp-save b { color: var(--teal); }
+.fine-print { margin-top: 18px; font-size: 13px; color: var(--muted); }
+.small { font-size: 15px; }
+@media (max-width: 640px) { .cmp { padding: 20px; } .cmp-cols { grid-template-columns: 1fr; } .cmp-col b { font-size: 30px; } }
+</style>
+</head>
+<body>
+
+<header class="top"><div class="wrap">
+  <a class="logo" href="#top" aria-label="VIKI Books home"><img src="/img/viki-books-logo.svg" alt="viki.books"></a>
+  <nav aria-label="Sections"><a href="#features">What it does</a><a href="#receipts">Read receipts</a><a href="#compare">Compare</a><a href="#course">Course</a><a href="#safe">Your data</a><a href="#prices">Prices</a><a href="#contact">Contact</a></nav>
+  <div class="right" style="display:flex;gap:16px;align-items:center"><a class="signin" href="https://books.vikisystems.live/">Sign in</a><a class="btn go small" href="https://books.vikisystems.live/#/signup">Start free trial</a></div>
+</div></header>
+
+<main id="top">
+<section class="hero"><div class="wrap">
+  <h1>Accounting built for Trinidad and Tobago<span class="dot">.</span></h1>
+  <p class="lead">Invoices, bank matching, payroll with NIS, PAYE and health surcharge, your VAT return worked out for you, and receipts read from a photo. For businesses, and for the accountants who look after them.</p>
+  <div class="acts">
+    <a class="btn go" href="https://books.vikisystems.live/#/signup">Start a 30-day free trial</a>
+    <a class="btn line" href="#course">Watch the 19-minute course</a>
+    <span class="fine">No card needed.</span>
+  </div>
+  <div class="shot"><img src="/img/home.jpg" width="1400" height="788" alt="The VIKI Books Today page: money in the bank, late invoices and when VAT is due, in one sentence"></div>
+</div></section>
+
+<section class="dates" aria-labelledby="dates-h"><div class="wrap">
+  <h2 id="dates-h">The dates you keep in your head, kept for you.</h2>
+  <p class="sub">VIKI Books knows the Trinidad and Tobago calendar. It lists every deadline for your business, soonest first, with your BIR numbers beside each one.</p>
+  <div class="cal">
+    <div><b>15<small>every month</small></b><span>PAYE and health surcharge to the BIR, and NIS to NIBTT, for last month's wages.</span></div>
+    <div><b>25<small>after each VAT period</small></b><span>Your VAT return, set out box by box in the order of the BIR form.</span></div>
+    <div><b>4 Jan<small>2027</small></b><span>NIS goes from 16.2% to 19.2%. VIKI Books switches on that date by itself.</span></div>
+    <div><b>28 Feb<small>every year</small></b><span>TD4s for every employee, worked out from the pay runs you posted.</span></div>
+  </div>
+</div></section>
+
+<section class="feat" id="features"><div class="wrap">
+  <h2>What it does, on the screens you will use.</h2>
+
+  <div class="row" id="receipts">
+    <div class="words"><span class="tag">New</span><h3>Read receipts: photograph them, VIKI types them in</h3>
+      <p>Take photos of a whole month of receipts and supplier bills at once. VIKI Books reads each one and fills in the supplier, date, receipt number, items, VAT and accounts. You check it and save. Nothing goes into the books until you do.</p>
+      <ul><li>QuickBooks has no Trinidad and Tobago version. VIKI reads receipts here, in TT dollars, the T&amp;T way</li><li>Reads dates day first, prices that include VAT, and zero-rated food and fuel</li><li>The same photo is never read twice, and a receipt already in the books is flagged</li><li>The photo is kept with the expense or bill</li></ul>
+      <p class="small" style="margin-top:12px"><b>Included for businesses. For accounting firms, an add-on from TT$75 a month per client. <a href="#contact">Ask us about it.</a></b></p></div>
+    <div class="shot"><img src="/img/receipts.jpg" loading="lazy" width="1400" height="788" alt="Read receipts: a photo of a Penny Savers receipt beside the supplier, date, receipt number, groceries line and zero-rated VAT it filled in"></div>
+  </div>
+
+  <div class="row">
+    <div class="words"><h3>Tick off the bank statement in one click</h3>
+      <p>Import the statement and VIKI Books has already found the match for each line: the payment, the date, even when the bank is a day behind your books. You check them, then accept them all at once.</p>
+      <ul><li>Lines it cannot match: find, create or ignore, one click each</li><li>Bank rules for the charges that repeat every month</li><li>Reconcile to a difference of zero, and undo if you need to</li></ul></div>
+    <div class="shot"><img src="/img/bank.jpg" loading="lazy" width="1400" height="788" alt="Bank matching: 16 lines to match, 15 suggested matches ready to accept"></div>
+  </div>
+
+  <div class="row flip">
+    <div class="words"><h3>Quote, invoice, paid</h3>
+      <p>Choose the customer and what you sold; the price and VAT fill in themselves. When they say yes, the quote becomes the invoice in one click, with your logo and their payment terms. Record the payment and it is in your bank.</p>
+      <ul><li>Send by email or as a WhatsApp message</li><li>Credit notes, customer statements, payment reminders</li><li>Bills and expenses kept apart, because only one of them is a debt</li></ul></div>
+    <div class="shot"><img src="/img/invoice.jpg" loading="lazy" width="1400" height="788" alt="A tax invoice with the company logo, VAT and the total"></div>
+  </div>
+
+  <div class="row">
+    <div class="words"><h3>Payroll with NIS, PAYE and health surcharge worked out</h3>
+      <p>Start a pay run for the pay date and every person's deductions are calculated at the rates in force on that date. Add overtime or a bonus, check the draft, post it. Wages and the employer's NIS go into your books in one go.</p>
+      <ul><li>Payslips ready to print or send</li><li>Monthly NIS, PAYE and TD4 figures ready to carry over</li><li>TD1 deductions, staff loans and union dues taken off by themselves</li></ul></div>
+    <div class="shot"><img src="/img/payroll.jpg" loading="lazy" width="1400" height="788" alt="A pay run with gross pay, NIS, health surcharge, PAYE and take-home for each employee"></div>
+  </div>
+
+  <div class="row flip">
+    <div class="words"><h3>Your VAT return, worked out for you</h3>
+      <p>When VAT is due, open the return. Every box is already filled in from your books, numbered the same as the BIR form, so you just copy the figures onto e-Tax. Mark it filed and paid, and it comes off your list.</p>
+      <ul><li>The TT$600,000 registration check over the last 12 months</li><li>Corporation tax, business levy and green fund levy estimates</li><li>Clearance certificates with their expiry dates</li></ul></div>
+    <div class="shot"><img src="/img/vat.jpg" loading="lazy" width="1400" height="788" alt="The VAT return, box 1 to box 9, beside the VAT registration limit chart"></div>
+  </div>
+
+  <div class="row">
+    <div class="words"><span class="tag">New</span><h3>Room tax and service charge for guest houses and restaurants</h3>
+      <p>Switch on hotel accommodation tax and a service charge once. Tick which lines each one goes on, rooms yes, dinner no, and each shows as its own line on the bill. Room tax is kept apart as money owed to the BIR, never counted as sales.</p>
+      <ul><li>A monthly report of room tax collected and service charge earned</li><li>Products remember which charges apply to them</li></ul></div>
+    <div class="shot"><img src="/img/roomtax.jpg" loading="lazy" width="1400" height="787" alt="An invoice with room tax ticked on the room line only, and the room tax and service charge in the totals"></div>
+  </div>
+
+  <div class="row flip">
+    <div class="words"><h3>For accountants: every client on one page</h3>
+      <p>Each client company has its own books, bank and VAT. You see them all together, with what needs attention. Combined reports put companies side by side with a total, and you decide which of your staff sees which client.</p>
+      <ul><li>Review and year-end checks, and requests to your clients</li><li>Data entry access for client staff who should not see the bank or profit</li></ul></div>
+    <div class="shot"><img src="/img/firm.jpg" loading="lazy" width="1400" height="788" alt="A combined profit and loss for three companies with a total column"></div>
+  </div>
+
+  <div class="row">
+    <div class="words"><h3>Moving from QuickBooks or a spreadsheet</h3>
+      <p>Export your lists from the old system and import them here, in the order the page shows. VIKI Books reads a QuickBooks export as it comes out. "Check first" shows what would be added and skipped before anything changes.</p>
+      <ul><li>Balances and every unpaid invoice and bill come across</li><li>Your old reports are kept as PDFs with the business</li><li>Compare the two trial balances to the cent before you switch</li></ul></div>
+    <div class="shot"><img src="/img/import.jpg" loading="lazy" width="1400" height="788" alt="Importing customers: Check first found 1 to add and 2 already there"></div>
+  </div>
+</div></section>
+
+<section class="course" id="course"><div class="wrap">
+  <a class="thumb" id="course-link" href="https://youtu.be/DyGMU4hZ6CI" target="_blank" rel="noopener" aria-label="Watch the VIKI Books course"><img src="/img/course.jpg" loading="lazy" width="1280" height="720" alt="VIKI Books: the full course, 19 minutes"></a>
+  <div><h2>The whole system in 19 minutes.</h2>
+    <p class="lead" style="margin-top:14px;font-size:18px">Jump to the part you care about.</p>
+    <ol>
+      <li><b>0:00</b>The bank job, in one minute</li>
+      <li><b>2:37</b>A day's work: quote to paid</li>
+      <li><b>5:10</b>Matching and reconciling the bank</li>
+      <li><b>9:00</b>Payroll</li>
+      <li><b>11:03</b>NIS, PAYE, TD4 and VAT</li>
+      <li><b>13:08</b>Moving across from your old system</li>
+      <li><b>16:23</b>Who can see what, and your data</li>
+    </ol></div>
+</div></section>
+
+<section class="safe" id="safe"><div class="wrap">
+  <h2>Your data is yours, and it is kept safe.</h2>
+  <div class="grid">
+    <div><h3>A full copy every night</h3><p>Your books are copied automatically every night and kept for 30 days. Each copy is checked after it is made.</p></div>
+    <div><h3>Take it with you any time</h3><p>Download a backup whenever you like, or export everything to one Excel file. You never have to ask us for it.</p></div>
+    <div><h3>Each person sees only their part</h3><p>Every person has their own sign-in. Data entry staff never see your bank, profit, reports or taxes.</p></div>
+    <div><h3>Every change is recorded</h3><p>The audit trail shows who changed what, when, and the value before and after. Nobody can edit or delete it.</p></div>
+    <div><h3>Closed months stay closed</h3><p>Close a month and nothing dated in it can be changed by accident. Reopening it is recorded too.</p></div>
+    <div><h3>Guessing a password does not work</h3><p>Ten wrong passwords and sign-in is held for fifteen minutes. A forgotten password is reset by email.</p></div>
+  </div>
+  <p class="honest">To be clear: VIKI Books prepares your VAT, PAYE and NIS figures and your deadlines. You, or your accountant, check them and file them with the BIR and NIBTT.</p>
+</div></section>
+
+<section class="prices" id="prices"><div class="wrap">
+  <h2>Simple monthly prices.</h2>
+  <p class="lead" style="margin-top:12px">Every feature is included. Try it free for 30 days first.</p>
+  <div class="plans">
+    <div class="plan"><div class="who">For a business</div>
+      <div class="amt">TT$599<small>a month for each business</small></div>
+      <ul><li>Invoices, bills, bank, payroll and VAT</li><li><b>Read receipts included</b>: photograph your receipts and VIKI fills them in</li><li>Each person in your team with their own sign-in</li><li>Running more than one business? Each one has its own books, and you see them all together</li></ul>
+      <a class="btn go" href="https://books.vikisystems.live/#/signup">Start a 30-day free trial</a></div>
+    <div class="plan firm"><div class="who">For accounting firms</div>
+      <div class="amt">TT$79<small>a month for each client company</small></div>
+      <ul><li>All your clients on one page</li><li>Combined reports, review and year-end</li><li>Your staff and your clients' staff, each with the access you choose</li></ul>
+      <a class="btn go" href="https://books.vikisystems.live/#/signup">Start a 30-day free trial</a></div>
+  </div>
+  <div class="addon"><b>Read receipts</b><span>Photograph your receipts and VIKI Books fills in the expenses and bills. Included in the business price. For accounting firms, from TT$75 a month per client.</span></div>
+  <div class="addon"><b>Ask VIKI, the AI assistant</b><span>An add-on: ask questions about your books in plain words. <a href="#contact">Ask us for the price.</a></span></div>
+</div></section>
+
+<section class="compare" id="compare"><div class="wrap">
+  <h2>What you save compared with QuickBooks.</h2>
+  <p class="lead" style="margin-top:12px">QuickBooks charges every business separately, in US dollars, and payroll costs extra. VIKI Books includes payroll and VAT, in TT dollars.</p>
+  <div class="cmp">
+    <div class="cmp-tabs" role="tablist"><button type="button" role="tab" aria-selected="true" data-who="firm">An accounting firm</button><button type="button" role="tab" aria-selected="false" data-who="biz">A business</button></div>
+    <div class="cmp-body" data-for="firm">
+      <label class="cmp-n">How many client companies? <input type="number" id="clients" min="1" max="2000" value="20" inputmode="numeric"></label>
+      <div class="cmp-cols">
+        <div class="cmp-col qb"><span>QuickBooks, cheapest plan</span><b id="qb-firm">TT$5,168</b><small>a month, payroll extra</small></div>
+        <div class="cmp-col vk"><span>VIKI Books</span><b id="vk-firm">TT$1,580</b><small>a month, payroll and VAT included</small></div>
+      </div>
+      <p class="cmp-save">You save <b id="save-firm">TT$3,588 a month</b>, about <b id="save-firm-y">TT$43,056 a year</b>.</p>
+    </div>
+    <div class="cmp-body" data-for="biz" hidden>
+      <div class="cmp-cols">
+        <div class="cmp-col qb"><span>QuickBooks Plus (5 users)</span><b>TT$952</b><small>a month, payroll extra</small></div>
+        <div class="cmp-col vk"><span>VIKI Books (5 people)</span><b>TT$599</b><small>a month, payroll, VAT and Read receipts included</small></div>
+      </div>
+      <p class="cmp-save">You save <b>TT$353 a month</b>, about <b>TT$4,236 a year</b>, before QuickBooks' payroll charges. And QuickBooks cannot read receipts in Trinidad and Tobago.</p>
+    </div>
+    <p class="fine-print">QuickBooks Online US list prices from 1 August 2026: Simple Start US$38, Plus US$140 a month, at TT$6.80 to US$1. QuickBooks' payroll is charged separately. QuickBooks is a trademark of Intuit Inc.; VIKI Systems is not connected with Intuit. Add-ons such as Read receipts are priced separately.</p>
+  </div>
+</div></section>
+
+<section class="contact" id="contact"><div class="wrap">
+  <div><h2 style="color:#fff">Thinking of moving? Talk to us first.</h2>
+    <p>We will tell you honestly what will come across from your old system and what will not, before you start.</p></div>
+  <div class="ways">
+    <a href="https://wa.me/18687877871">WhatsApp 1-868-787-7871 <span>Fastest</span></a>
+    <a href="mailto:vikisystem.live@gmail.com">vikisystem.live@gmail.com <span>Email</span></a>
+  </div>
+</div></section>
+</main>
+
+<footer><div class="wrap">
+  <span class="grow">&copy; 2026 VIKI Systems, Trinidad and Tobago. Makers of VIKI Books and <a href="/bookings/">VIKI Bookings</a>.</span><a href="/">VIKI Systems</a>
+  <a href="/books/privacy.html">Privacy</a><a href="/books/terms.html">Terms</a><a href="https://books.vikisystems.live/">Sign in</a>
+</div></footer>
+<script>
+(function () {
+  var QB = 38 * 6.8, VK = 79;
+  var fmt = function (n) { return 'TT$' + Math.round(n).toLocaleString('en-US'); };
+  var inp = document.getElementById('clients');
+  function calc() {
+    var n = Math.max(1, Math.min(2000, parseInt(inp.value, 10) || 1));
+    var qb = n * QB, vk = n * VK;
+    document.getElementById('qb-firm').textContent = fmt(qb);
+    document.getElementById('vk-firm').textContent = fmt(vk);
+    document.getElementById('save-firm').textContent = fmt(qb - vk) + ' a month';
+    document.getElementById('save-firm-y').textContent = fmt((qb - vk) * 12) + ' a year';
+  }
+  inp.addEventListener('input', calc); calc();
+  document.querySelectorAll('.cmp-tabs button').forEach(function (b) {
+    b.addEventListener('click', function () {
+      document.querySelectorAll('.cmp-tabs button').forEach(function (x) { x.setAttribute('aria-selected', x === b ? 'true' : 'false'); });
+      document.querySelectorAll('.cmp-body').forEach(function (d) { d.hidden = d.getAttribute('data-for') !== b.getAttribute('data-who'); });
+    });
+  });
+})();
+</script>
+</body>
+</html>

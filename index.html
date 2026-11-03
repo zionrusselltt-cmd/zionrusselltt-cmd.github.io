@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>VIKI Systems</title>
+<meta name="description" content="VIKI Systems is a Trinidad and Tobago software company founded by Zion Russell. It makes VIKI Books, for accounting, payroll and VAT, and VIKI Bookings, for hotels and guest houses.">
+<meta property="og:title" content="VIKI Systems">
+<meta property="og:description" content="VIKI Books for accounting, payroll and VAT. VIKI Bookings for hotels and guest houses. Made in Trinidad and Tobago.">
+<meta property="og:image" content="https://vikisystems.live/img/share.png">
+<link rel="icon" href="/img/viki-mark.svg" type="image/svg+xml">
+<style>
+@font-face { font-family: "Poppins"; src: url("/fonts/poppins-medium.woff") format("woff"); font-weight: 500 600; font-display: swap; }
+@font-face { font-family: "Poppins"; src: url("/fonts/poppins-bold.woff") format("woff"); font-weight: 700 800; font-display: swap; }
+/* one screen: the company name, then two doors */
+:root {
+  color-scheme: dark;
+  --ink: #1B2140; --deep: #141933; --line: #343C63; --soft: #B9C1DE; --white: #FFFFFF; --orange: #FF7A45; --blue: #3D7BFF; --teal: #0FA3B1;
+  --display: "Poppins", "Segoe UI", system-ui, sans-serif;
+  --text: "Segoe UI Variable Text", "Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+}
+* { box-sizing: border-box; }
+html, body { min-height: 100%; }
+body { margin: 0; background: var(--ink); color: var(--white); font: 17px/1.6 var(--text); -webkit-font-smoothing: antialiased; display: flex; flex-direction: column; min-height: 100vh;
+  background-image: radial-gradient(circle at 88% 8%, rgba(61, 123, 255, .28), transparent 42%), radial-gradient(circle at 6% 96%, rgba(255, 122, 69, .14), transparent 38%); }
+img { max-width: 100%; height: auto; display: block; }
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--orange); outline-offset: 4px; border-radius: 10px; }
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+.wrap { width: min(1100px, 100% - 40px); margin-inline: auto; }
+header { padding: 34px 0 0; }
+header img { height: 30px; width: auto; }
+main { flex: 1; display: flex; align-items: center; padding: 64px 0 72px; }
+h1 { font: 700 clamp(36px, 5.6vw, 64px)/1.06 var(--display); letter-spacing: -.035em; margin: 0; max-width: 13em; text-wrap: balance; }
+.lead { margin: 18px 0 0; color: var(--soft); font-size: 19px; max-width: 34em; }
+.doors { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 48px; }
+.door { display: flex; flex-direction: column; gap: 14px; padding: 30px 30px 26px; border-radius: 22px; text-decoration: none; background: rgba(255, 255, 255, .04); border: 1px solid var(--line); transition: border-color .2s, background .2s, transform .2s; }
+.door:hover { border-color: var(--orange); background: rgba(255, 255, 255, .07); transform: translateY(-2px); }
+.door .logo { height: auto; align-self: flex-start; }
+.door p { margin: 0; color: var(--soft); }
+.door .for { font: 600 15px/1.2 var(--display); color: var(--white); }
+.door .go { margin-top: 8px; align-self: flex-start; background: var(--orange); color: var(--white); font: 600 16px/1 var(--display); padding: 14px 22px; border-radius: 12px; }
+@media (max-width: 760px) { .doors { grid-template-columns: 1fr; } main { padding: 40px 0 56px; } }
+footer { border-top: 1px solid var(--line); padding: 22px 0 26px; font-size: 14px; color: var(--soft); }
+footer .wrap { display: flex; flex-wrap: wrap; gap: 8px 24px; }
+footer .grow { flex: 1; min-width: 14em; }
+footer a { text-decoration: none; color: var(--white); }
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "VIKI Systems",
+  "url": "https://vikisystems.live/",
+  "logo": "https://vikisystems.live/img/viki-mark.svg",
+  "description": "VIKI Systems is a Trinidad and Tobago software company founded by Zion Russell. It makes VIKI Books, accounting, payroll and VAT software, and VIKI Bookings, a hotel and guest house system.",
+  "founder": { "@type": "Person", "name": "Zion Russell", "jobTitle": "Founder" },
+  "areaServed": { "@type": "Country", "name": "Trinidad and Tobago" },
+  "address": { "@type": "PostalAddress", "addressCountry": "TT" },
+  "email": "vikisystem.live@gmail.com",
+  "telephone": "+1-868-787-7871",
+  "brand": [ { "@type": "Brand", "name": "VIKI Books" }, { "@type": "Brand", "name": "VIKI Bookings" } ]
+}
+</script>
+</head>
+<body>
+<header><div class="wrap"><img src="/img/viki-systems-logo-white.svg" alt="viki.systems" width="150" height="31"></div></header>
+<main><div class="wrap">
+  <h1>Software for Trinidad and Tobago businesses.</h1>
+  <p class="lead">Made here, for the way businesses here work: BIR, NIS, VAT, room tax and all.</p>
+  <div class="doors">
+    <a class="door" href="/books/">
+      <img class="logo" src="/img/viki-books-logo-white.svg" alt="viki.books" width="200" height="39" style="width:200px">
+      <span class="for">Accounting, payroll and VAT</span>
+      <p>For businesses and accounting firms. Invoices, bank matching, NIS, PAYE and health surcharge, and VAT laid out like the BIR form.</p>
+      <span class="go">VIKI Books</span>
+    </a>
+    <a class="door" href="/bookings/">
+      <img class="logo" src="/img/viki-bookings-logo-white.svg" alt="viki.bookings" width="263" height="52" style="width:263px">
+      <span class="for">Hotels and guest houses</span>
+      <p>Bookings, the front desk, the restaurant and bar till, and the monthly reports. Guests book from your own page.</p>
+      <span class="go">VIKI Bookings</span>
+    </a>
+  </div>
+</div></main>
+<footer><div class="wrap">
+  <span class="grow">&copy; 2026 VIKI Systems, Trinidad and Tobago</span>
+  <span>WhatsApp <a href="https://wa.me/18687877871">1-868-787-7871</a></span>
+  <span><a href="mailto:vikisystem.live@gmail.com">vikisystem.live@gmail.com</a></span>
+</div></footer>
+</body>
+</html>
