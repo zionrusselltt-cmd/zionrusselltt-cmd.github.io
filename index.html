@@ -3,90 +3,304 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>VIKI Systems</title>
-<meta name="description" content="VIKI Systems is a Trinidad and Tobago software company founded by Zion Russell. It makes VIKI Books, for accounting, payroll and VAT, and VIKI Bookings, for hotels and guest houses.">
-<meta property="og:title" content="VIKI Systems">
-<meta property="og:description" content="VIKI Books for accounting, payroll and VAT. VIKI Bookings for hotels and guest houses. Made in Trinidad and Tobago.">
-<meta property="og:image" content="https://vikisystems.live/img/share.png">
-<link rel="icon" href="/img/viki-mark.svg" type="image/svg+xml">
-<style>
-@font-face { font-family: "Poppins"; src: url("/fonts/poppins-medium.woff") format("woff"); font-weight: 500 600; font-display: swap; }
-@font-face { font-family: "Poppins"; src: url("/fonts/poppins-bold.woff") format("woff"); font-weight: 700 800; font-display: swap; }
-/* one screen: the company name, then two doors */
-:root {
-  color-scheme: dark;
-  --ink: #1B2140; --deep: #141933; --line: #343C63; --soft: #B9C1DE; --white: #FFFFFF; --orange: #FF7A45; --blue: #3D7BFF; --teal: #0FA3B1;
-  --display: "Poppins", "Segoe UI", system-ui, sans-serif;
-  --text: "Segoe UI Variable Text", "Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
-}
-* { box-sizing: border-box; }
-html, body { min-height: 100%; }
-body { margin: 0; background: var(--ink); color: var(--white); font: 17px/1.6 var(--text); -webkit-font-smoothing: antialiased; display: flex; flex-direction: column; min-height: 100vh;
-  background-image: radial-gradient(circle at 88% 8%, rgba(61, 123, 255, .28), transparent 42%), radial-gradient(circle at 6% 96%, rgba(255, 122, 69, .14), transparent 38%); }
-img { max-width: 100%; height: auto; display: block; }
-a { color: inherit; }
-:focus-visible { outline: 3px solid var(--orange); outline-offset: 4px; border-radius: 10px; }
-@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
-.wrap { width: min(1100px, 100% - 40px); margin-inline: auto; }
-header { padding: 34px 0 0; }
-header img { height: 30px; width: auto; }
-main { flex: 1; display: flex; align-items: center; padding: 64px 0 72px; }
-h1 { font: 700 clamp(36px, 5.6vw, 64px)/1.06 var(--display); letter-spacing: -.035em; margin: 0; max-width: 13em; text-wrap: balance; }
-.lead { margin: 18px 0 0; color: var(--soft); font-size: 19px; max-width: 34em; }
-.doors { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 48px; }
-.door { display: flex; flex-direction: column; gap: 14px; padding: 30px 30px 26px; border-radius: 22px; text-decoration: none; background: rgba(255, 255, 255, .04); border: 1px solid var(--line); transition: border-color .2s, background .2s, transform .2s; }
-.door:hover { border-color: var(--orange); background: rgba(255, 255, 255, .07); transform: translateY(-2px); }
-.door .logo { height: auto; align-self: flex-start; }
-.door p { margin: 0; color: var(--soft); }
-.door .for { font: 600 15px/1.2 var(--display); color: var(--white); }
-.door .go { margin-top: 8px; align-self: flex-start; background: var(--orange); color: var(--white); font: 600 16px/1 var(--display); padding: 14px 22px; border-radius: 12px; }
-@media (max-width: 760px) { .doors { grid-template-columns: 1fr; } main { padding: 40px 0 56px; } }
-footer { border-top: 1px solid var(--line); padding: 22px 0 26px; font-size: 14px; color: var(--soft); }
-footer .wrap { display: flex; flex-wrap: wrap; gap: 8px 24px; }
-footer .grow { flex: 1; min-width: 14em; }
-footer a { text-decoration: none; color: var(--white); }
-</style>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  "name": "VIKI Systems",
-  "url": "https://vikisystems.live/",
-  "logo": "https://vikisystems.live/img/viki-mark.svg",
-  "description": "VIKI Systems is a Trinidad and Tobago software company founded by Zion Russell. It makes VIKI Books, accounting, payroll and VAT software, and VIKI Bookings, a hotel and guest house system.",
-  "founder": { "@type": "Person", "name": "Zion Russell", "jobTitle": "Founder" },
-  "areaServed": { "@type": "Country", "name": "Trinidad and Tobago" },
-  "address": { "@type": "PostalAddress", "addressCountry": "TT" },
-  "email": "vikisystem.live@gmail.com",
-  "telephone": "+1-868-787-7871",
-  "brand": [ { "@type": "Brand", "name": "VIKI Books" }, { "@type": "Brand", "name": "VIKI Bookings" } ]
-}
-</script>
+<title>VIKI Systems | Software for Trinidad and Tobago businesses</title>
+<meta name="description" content="VIKI Books and VIKI Bookings. Accounting, payroll, VAT, and hotel software made in Trinidad and Tobago, for the way businesses here work: BIR, NIS, VAT, room tax and all.">
+<meta name="theme-color" content="#0F1430">
+<meta property="og:type" content="website">
+<meta property="og:title" content="VIKI Systems | Software for Trinidad and Tobago businesses">
+<meta property="og:description" content="Made here, for the way businesses here work: BIR, NIS, VAT, room tax and all.">
+<meta property="og:url" content="https://vikisystems.live/">
+<meta property="og:image" content="https://vikisystems.live/assets/img/hero.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%231B2140'/%3E%3Cpath d='M8 9h4.2l3.8 10.6L19.8 9H24l-6 15h-4z' fill='%23fff'/%3E%3Ccircle cx='24.5' cy='24.5' r='3.2' fill='%23FF7A45'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="assets/img/poster.jpg">
+<link rel="stylesheet" href="style.css">
+<script>document.documentElement.classList.add("js")</script>
 </head>
-<body>
-<header><div class="wrap"><img src="/img/viki-systems-logo-white.svg" alt="viki.systems" width="150" height="31"></div></header>
-<main><div class="wrap">
-  <h1>Software for Trinidad and Tobago businesses.</h1>
-  <p class="lead">Made here, for the way businesses here work: BIR, NIS, VAT, room tax and all.</p>
-  <div class="doors">
-    <a class="door" href="/books/">
-      <img class="logo" src="/img/viki-books-logo-white.svg" alt="viki.books" width="200" height="39" style="width:200px">
-      <span class="for">Accounting, payroll and VAT</span>
-      <p>For businesses and accounting firms. Invoices, bank matching, NIS, PAYE and health surcharge, and VAT laid out like the BIR form.</p>
-      <span class="go">VIKI Books</span>
-    </a>
-    <a class="door" href="/bookings/">
-      <img class="logo" src="/img/viki-bookings-logo-white.svg" alt="viki.bookings" width="263" height="52" style="width:263px">
-      <span class="for">Hotels and guest houses</span>
-      <p>Bookings, the front desk, the restaurant and bar till, and the monthly reports. Guests book from your own page.</p>
-      <span class="go">VIKI Bookings</span>
-    </a>
+<body class="home">
+<a class="skip" href="#page">Skip to content</a>
+
+<video id="bgv" class="bg-video" muted playsinline preload="none" aria-hidden="true" tabindex="-1"></video>
+<div class="mobile-poster" aria-hidden="true"></div>
+<div class="bg-tint" aria-hidden="true"></div>
+
+<header class="nav">
+  <div class="wrap nav__in">
+    <a class="nav__logo" href="./" aria-label="VIKI Systems home"><img src="assets/img/viki-systems-logo-white.svg" alt="viki.systems" width="140" height="27"></a>
+    <nav class="nav__links" aria-label="Main">
+      <a href="books/">VIKI Books</a>
+      <a href="bookings/">VIKI Bookings</a>
+      <a href="#deadlines">Deadlines</a>
+      <a href="#savings">What you save</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="nav__cta">
+      <a class="btn btn--primary btn--sm" href="https://books.vikisystems.live/#/signup">Start free trial</a>
+    </div>
+    <button class="nav__burger" aria-label="Open menu" aria-expanded="false" aria-controls="menu"><span></span></button>
+    <div class="nav__menu" id="menu">
+      <a href="books/">VIKI Books</a>
+      <a href="bookings/">VIKI Bookings</a>
+      <a href="#deadlines">Deadlines</a>
+      <a href="#savings">What you save</a>
+      <a href="#contact">Contact</a>
+      <a class="btn btn--primary" href="https://books.vikisystems.live/#/signup">Start a 30-day free trial</a>
+    </div>
   </div>
-</div></main>
-<footer><div class="wrap">
-  <span class="grow">&copy; 2026 VIKI Systems, Trinidad and Tobago</span>
-  <span>WhatsApp <a href="https://wa.me/18687877871">1-868-787-7871</a></span>
-  <span><a href="mailto:vikisystem.live@gmail.com">vikisystem.live@gmail.com</a></span>
-</div></footer>
+</header>
+
+<main id="page">
+
+  <!-- HERO -->
+  <section class="hero" id="top">
+    <div class="wrap">
+      <div class="hero__copy" id="heroCopy">
+        <p class="eyebrow"><span class="dot"></span>Made in Trinidad and Tobago</p>
+        <h1 class="display">Software for Trinidad and Tobago businesses<span class="o">.</span></h1>
+        <p class="lead">Made here, for the way businesses here work: BIR, NIS, VAT, room tax and all.</p>
+        <div class="cta-row">
+          <a class="btn btn--primary" href="books/">VIKI Books <span class="arr" aria-hidden="true">→</span></a>
+          <a class="btn btn--ghost" href="bookings/">VIKI Bookings <span class="arr" aria-hidden="true">→</span></a>
+        </div>
+        <div class="hero__chips">
+          <span class="chip"><span class="dot"></span>VAT laid out like the BIR form</span>
+          <span class="chip">NIS, PAYE and health surcharge</span>
+          <span class="chip">Priced in TT dollars</span>
+        </div>
+      </div>
+    </div>
+    <div class="scroll-cue" aria-hidden="true"><i></i>Scroll</div>
+  </section>
+
+  <!-- STATEMENT (pinned, word by word) -->
+  <section class="statement" id="statement" aria-label="Why VIKI">
+    <div class="wrap">
+      <p class="statement__text reveal" id="statementText">QuickBooks has no Trinidad and Tobago version. VIKI was <span class="hl">made here,</span> for the way businesses here work.</p>
+    </div>
+  </section>
+
+  <div class="panel">
+
+    <!-- PRODUCTS -->
+    <section class="section" id="products">
+      <div class="wrap">
+        <div class="sec-head reveal">
+          <p class="eyebrow"><span class="dot"></span>Two systems</p>
+          <h2>Pick the one built for your business<span class="o">.</span></h2>
+        </div>
+        <div class="products">
+          <div class="tilt-scene reveal">
+            <a class="prod prod--books" href="books/" data-tilt="6">
+              <span class="prod__bg" aria-hidden="true"></span>
+              <img class="prod__logo" src="assets/img/viki-books-logo-white.svg" alt="VIKI Books" width="156" height="30">
+              <p class="prod__kick">Accounting, payroll and VAT</p>
+              <p>For businesses and accounting firms. Invoices, bank matching, NIS, PAYE and health surcharge, and VAT laid out like the BIR form.</p>
+              <div class="prod__stage" aria-hidden="true">
+                <div class="mini mini--a"><span>Money in the bank</span><b><small>TT$</small> <span class="bl" style="display:inline;font-size:inherit" data-count="710339.67" data-decimals="2">710,339.67</span></b></div>
+                <div class="mini mini--b"><span>Customers owe you</span><b class="o2"><small>TT$</small> 21,791.25</b></div>
+                <div class="mini mini--c"><span>Your VAT return</span><b>Worked out for you</b><span>Every box filled in from your books</span></div>
+              </div>
+              <div class="prod__foot">
+                <span class="link-arrow">See VIKI Books <span class="arr">→</span></span>
+                <span class="cta-note">30-day free trial, no card needed</span>
+              </div>
+              <span class="glare" aria-hidden="true"></span>
+            </a>
+          </div>
+          <div class="tilt-scene reveal">
+            <a class="prod prod--bookings" href="bookings/" data-tilt="6">
+              <span class="prod__bg" aria-hidden="true"></span>
+              <img class="prod__logo" src="assets/img/viki-bookings-logo-white.svg" alt="VIKI Bookings" width="196" height="30">
+              <p class="prod__kick">Hotels and guest houses</p>
+              <p>Bookings, the front desk, the restaurant and bar till, and the monthly reports. Guests book from your own page.</p>
+              <div class="prod__stage" aria-hidden="true">
+                <div class="mini mini--cal">
+                  <div class="mcal">
+                    <div class="mcal__row">Apartment 1<div class="mcal__track"><i style="left:4%;width:38%"></i><i style="left:55%;width:30%"></i></div></div>
+                    <div class="mcal__row">Deluxe 5<div class="mcal__track"><i style="left:20%;width:22%"></i><i class="p" style="left:46%;width:26%"></i></div></div>
+                    <div class="mcal__row">Deluxe 6<div class="mcal__track"><i class="p" style="left:0;width:14%"></i><i style="left:30%;width:44%"></i></div></div>
+                    <div class="mcal__row">Penthouse 9<div class="mcal__track"><i style="left:10%;width:30%"></i><i style="left:62%;width:34%"></i></div></div>
+                  </div>
+                </div>
+                <div class="mini mini--arr"><span>Arriving today</span><b>3</b><span>7 rooms occupied tonight</span></div>
+              </div>
+              <div class="prod__foot">
+                <span class="link-arrow">See VIKI Bookings <span class="arr">→</span></span>
+                <span class="cta-note">TT$1,200 a month, the whole hotel</span>
+              </div>
+              <span class="glare" aria-hidden="true"></span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- WHY LOCAL -->
+    <section class="section section--tight">
+      <div class="wrap">
+        <div class="local stagger">
+          <div class="card" data-spot>
+            <div class="ico ico--o"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M14.8 9.2a3 3 0 0 0-2.8-1.7c-1.7 0-3 1-3 2.3 0 3 6 1.6 6 4.5 0 1.3-1.3 2.3-3 2.3a3.2 3.2 0 0 1-3-1.8M12 6v1.5M12 16.5V18"/></svg></div>
+            <h3>In TT dollars</h3>
+            <p>QuickBooks charges every business separately, in US dollars, and payroll costs extra. VIKI Books includes payroll and VAT, in TT dollars.</p>
+          </div>
+          <div class="card" data-spot>
+            <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/><path d="M8 14h3v3H8z"/></svg></div>
+            <h3>Knows the local calendar</h3>
+            <p>It lists every deadline for your business, soonest first, with your BIR numbers beside each one.</p>
+          </div>
+          <div class="card" data-spot>
+            <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 4.5-3.4 8.3-8 9-4.6-.7-8-4.5-8-9V6z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg></div>
+            <h3>Your data is yours</h3>
+            <p>A full copy every night. Download a backup whenever you like, or export everything to one Excel file.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DEADLINES -->
+    <section class="section band" id="deadlines" data-deadlines>
+      <div class="wrap">
+        <div class="sec-head reveal">
+          <p class="eyebrow"><span class="dot"></span>VIKI Books</p>
+          <h2>The dates you keep in your head, kept for you<span class="o">.</span></h2>
+          <p class="lead">VIKI Books knows the Trinidad and Tobago calendar. It lists every deadline for your business, soonest first, with your BIR numbers beside each one.</p>
+        </div>
+        <div class="timeline reveal" aria-hidden="true"><span class="timeline__today">Today</span><span class="timeline__end"></span><div class="timeline__track"></div></div>
+        <div class="dl stagger">
+          <div class="card dl__card" data-kind="monthly" data-day="15" data-short="PAYE and NIS">
+            <div class="dl__big">15<small>every month</small></div>
+            <p>PAYE and health surcharge to the BIR, and NIS to NIBTT, for last month's wages.</p>
+            <span class="dl__count"><span class="dot"></span>Every month</span>
+          </div>
+          <div class="card dl__card">
+            <div class="dl__big">25<small>after each VAT period</small></div>
+            <p>Your VAT return, set out box by box in the order of the BIR form.</p>
+            <span class="dl__count"><span class="dot"></span>Worked out for you</span>
+          </div>
+          <div class="card dl__card" data-kind="date" data-date="2027-01-04" data-since="4 Jan 2027" data-short="NIS change">
+            <div class="dl__big">4 Jan<small>2027</small></div>
+            <p>NIS goes from 16.2% to 19.2%. VIKI Books switches on that date by itself.</p>
+            <span class="dl__count"><span class="dot"></span>4 Jan 2027</span>
+          </div>
+          <div class="card dl__card" data-kind="yearly" data-md="2-28" data-short="TD4s">
+            <div class="dl__big">28 Feb<small>every year</small></div>
+            <p>TD4s for every employee, worked out from the pay runs you posted.</p>
+            <span class="dl__count"><span class="dot"></span>Every year</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SAVINGS -->
+    <section class="section" id="savings">
+      <div class="wrap">
+        <div class="sec-head reveal">
+          <p class="eyebrow"><span class="dot"></span>Do the maths</p>
+          <h2>What you save compared with QuickBooks<span class="o">.</span></h2>
+          <p class="lead">QuickBooks charges every business separately, in US dollars, and payroll costs extra. VIKI Books includes payroll and VAT, in TT dollars.</p>
+        </div>
+        <div class="glass calc reveal" data-calc>
+          <div class="seg" role="tablist" aria-label="Who is this for">
+            <button type="button" role="tab" aria-selected="true" data-who="firm">An accounting firm</button>
+            <button type="button" role="tab" aria-selected="false" data-who="biz">A business</button>
+          </div>
+          <div class="calc__grid">
+            <div>
+              <div class="calc__n">
+                <label for="clients">How many client companies?</label>
+                <div class="row">
+                  <input type="range" min="1" max="200" value="20" aria-label="Client companies">
+                  <input class="input" id="clients" type="number" min="1" max="2000" value="20" inputmode="numeric">
+                </div>
+              </div>
+              <div class="calc__cols">
+                <div class="calc__col"><span data-out="qbl">QuickBooks, cheapest plan</span><b data-out="qb">TT$5,168</b><small>a month, payroll extra</small></div>
+                <div class="calc__col vk"><span data-out="vkl">VIKI Books</span><b data-out="vk">TT$1,580</b><small data-out="vks">a month, payroll and VAT included</small></div>
+              </div>
+              <p class="calc__save">You save <b data-out="savem">TT$3,588 a month</b>, about <b data-out="savey">TT$43,056 a year</b>.<span data-out="extra"></span></p>
+            </div>
+            <div class="bars" aria-hidden="true">
+              <div class="bar3d bar3d--qb" style="--h:88%"><i class="t"></i><i class="s"></i><i class="f"></i><label>QuickBooks</label></div>
+              <div class="bar3d bar3d--vk" style="--h:27%"><i class="t"></i><i class="s"></i><i class="f"></i><label>VIKI Books</label></div>
+            </div>
+          </div>
+          <p class="fine" style="margin-top:26px">QuickBooks Online US list prices from 1 August 2026: Simple Start US$38, Plus US$140 a month, at TT$6.80 to US$1. QuickBooks' payroll is charged separately. QuickBooks is a trademark of Intuit Inc.; VIKI Systems is not connected with Intuit. Add-ons such as Read receipts are priced separately.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="section" id="contact">
+      <div class="wrap contact">
+        <div class="reveal">
+          <p class="eyebrow"><span class="dot"></span>Contact</p>
+          <h2>Talk to a person, here in Trinidad and Tobago<span class="o">.</span></h2>
+          <p class="lead" style="margin-top:16px">Questions about VIKI Books or VIKI Bookings? Message us and we will answer honestly, including what will and will not come across from your old system.</p>
+          <div class="contact__ways">
+            <a class="way" href="https://wa.me/18687877871" target="_blank" rel="noopener">
+              <span class="way__icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.3c0-.1-.2-.2-.5-.3z"/></svg></span>
+              <span><b>WhatsApp 1-868-787-7871</b><small>Message us any time</small></span>
+              <span class="pill">Fastest</span>
+            </a>
+            <a class="way" href="mailto:vikisystem.live@gmail.com">
+              <span class="way__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M3.5 7l8.5 6 8.5-6"/></svg></span>
+              <span><b>vikisystem.live@gmail.com</b><small>Email</small></span>
+            </a>
+          </div>
+        </div>
+        <form class="glass form reveal" data-mailform novalidate>
+          <div class="form__row">
+            <div class="field"><label for="f-name">Your name</label><input class="input" id="f-name" name="name" autocomplete="name" required></div>
+            <div class="field"><label for="f-biz">Business</label><input class="input" id="f-biz" name="business" autocomplete="organization"></div>
+          </div>
+          <div class="form__row">
+            <div class="field"><label for="f-prod">Interested in</label>
+              <select class="input" id="f-prod" name="product"><option>VIKI Books</option><option>VIKI Bookings</option><option>Both</option><option>Not sure yet</option></select></div>
+            <div class="field"><label for="f-phone">Phone (optional)</label><input class="input" id="f-phone" name="phone" type="tel" autocomplete="tel"></div>
+          </div>
+          <div class="field"><label for="f-msg">Message</label><textarea class="input" id="f-msg" name="message" required placeholder="Tell us a little about your business"></textarea></div>
+          <div class="form__actions">
+            <button class="btn btn--primary" type="submit">Send by email</button>
+            <button class="btn btn--ghost" type="button" data-wa>Send on WhatsApp</button>
+          </div>
+          <div class="form__done" role="status">
+            <div class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg></div>
+            <h3>Your message is ready to send</h3>
+            <p class="lead" style="margin:10px auto 22px">Your email or WhatsApp opened with everything filled in. Press send there and it reaches us.</p>
+            <button class="btn btn--ghost btn--sm" type="button" data-again>Write another</button>
+          </div>
+        </form>
+      </div>
+    </section>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer__in">
+      <div>
+        <img src="assets/img/viki-systems-logo-white.svg" alt="viki.systems" width="140" height="27">
+        <p class="fine" style="max-width:360px">Software for Trinidad and Tobago businesses. Made here, for the way businesses here work.</p>
+      </div>
+      <div>
+        <h4>Products</h4>
+        <ul><li><a href="books/">VIKI Books</a></li><li><a href="bookings/">VIKI Bookings</a></li><li><a href="https://books.vikisystems.live/">Sign in to VIKI Books</a></li></ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul><li><a href="https://wa.me/18687877871" target="_blank" rel="noopener">WhatsApp 1-868-787-7871</a></li><li><a href="mailto:vikisystem.live@gmail.com">vikisystem.live@gmail.com</a></li><li><a href="books/privacy.html">Privacy</a></li><li><a href="books/terms.html">Terms</a></li></ul>
+      </div>
+    </div>
+    <div class="footer__base"><span>© <span data-year>2026</span> VIKI Systems, Trinidad and Tobago</span><span>QuickBooks is a trademark of Intuit Inc. VIKI Systems is not connected with Intuit.</span></div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script><script src="main.js"></script>
+<script src="home.js"></script>
 </body>
 </html>

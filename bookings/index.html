@@ -3,175 +3,477 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>VIKI Bookings: the hotel and guest house system</title>
-<meta name="description" content="VIKI Bookings runs bookings, the front desk, the restaurant and bar till and the monthly reports for hotels and guest houses in Trinidad and Tobago.">
-<meta property="og:title" content="VIKI Bookings">
-<meta property="og:image" content="https://vikisystems.live/img/share.png">
-<link rel="icon" href="/img/viki-mark.svg" type="image/svg+xml">
-<style>
-@font-face { font-family: "Poppins"; src: url("/fonts/poppins-medium.woff") format("woff"); font-weight: 500 600; font-display: swap; }
-@font-face { font-family: "Poppins"; src: url("/fonts/poppins-bold.woff") format("woff"); font-weight: 700 800; font-display: swap; }
-:root {
-  --ink: #1B2140; --ink-2: #4A5270; --muted: #6B7391; --paper: #F6F8FD; --surface: #FFFFFF; --rule: #E2E7F3;
-  --orange: #FF7A45; --blue: #3D7BFF; --blue-2: #2A5FD6; --teal: #0E8F9C;
-  --display: "Poppins", "Segoe UI", system-ui, sans-serif;
-  --text: "Segoe UI Variable Text", "Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
-}
-* { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
-@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { animation: none !important; transition: none !important; } }
-body { margin: 0; background: var(--paper); color: var(--ink); font: 17px/1.6 var(--text); -webkit-font-smoothing: antialiased; }
-img { max-width: 100%; height: auto; display: block; }
-a { color: var(--blue-2); }
-:focus-visible { outline: 3px solid var(--orange); outline-offset: 3px; border-radius: 6px; }
-.wrap { width: min(1160px, 100% - 40px); margin-inline: auto; }
-h1, h2, h3 { font-family: var(--display); letter-spacing: -.025em; line-height: 1.1; margin: 0; }
-h1 { font-size: clamp(38px, 6vw, 68px); font-weight: 700; }
-h2 { font-size: clamp(28px, 3.6vw, 42px); font-weight: 700; }
-h3 { font-size: 22px; font-weight: 600; letter-spacing: -.015em; }
-p { margin: 0; }
-.lead { font-size: 20px; color: var(--ink-2); max-width: 34em; }
-
-/* header */
-.top { position: sticky; top: 0; z-index: 10; background: rgba(246, 248, 253, .92); backdrop-filter: blur(10px); border-bottom: 1px solid var(--rule); }
-.top .wrap { display: flex; align-items: center; gap: 28px; height: 68px; }
-.top .logo img { height: 26px; width: auto; }
-.top nav { display: flex; gap: 22px; margin-left: auto; font-size: 15px; }
-.top nav a { color: var(--ink-2); text-decoration: none; }
-.top nav a:hover { color: var(--ink); }
-.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; font: 600 16px/1 var(--display); text-decoration: none; padding: 15px 24px; border-radius: 12px; border: 2px solid transparent; cursor: pointer; }
-.btn.go { background: var(--orange); color: #fff; }
-.btn.go:hover { background: #F2662E; }
-.btn.line { border-color: var(--ink); color: var(--ink); background: transparent; }
-.btn.line:hover { background: var(--ink); color: #fff; }
-.btn.small { padding: 10px 16px; font-size: 14px; border-radius: 10px; }
-.signin { font-size: 15px; color: var(--ink-2); text-decoration: none; }
-@media (max-width: 860px) { .top nav { display: none; } .top .wrap { gap: 14px; } .top .right { margin-left: auto; } }
-
-/* hero */
-.hero { padding: 72px 0 0; overflow: hidden; }
-.hero .wrap { display: grid; grid-template-columns: 1fr; gap: 26px; }
-.hero h1 { max-width: 13em; }
-.hero h1 .dot { color: var(--orange); }
-.hero .acts { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; margin-top: 6px; }
-.hero .fine { font-size: 14px; color: var(--muted); }
-.shot { border-radius: 16px; background: #fff; box-shadow: 0 1px 2px rgba(27, 33, 64, .06), 0 24px 60px -20px rgba(27, 33, 64, .28); overflow: hidden; border: 1px solid var(--rule); }
-.hero .shot { margin-top: 38px; transform: perspective(1800px) rotateX(6deg); transform-origin: top center; margin-bottom: -60px; }
-
-/* the dates strip: the thing nobody else shows */
-.dates { background: var(--ink); color: #fff; padding: 110px 0 64px; }
-.dates h2 { color: #fff; max-width: 20em; }
-.dates .sub { color: #B9C1DE; margin-top: 12px; max-width: 40em; }
-.cal { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; margin-top: 40px; border-top: 1px solid #343C63; }
-.cal div { padding: 22px 22px 6px 0; border-right: 1px solid #343C63; }
-.cal div + div { padding-left: 22px; }
-.cal div:last-child { border-right: 0; }
-.cal b { display: block; font: 700 34px/1 var(--display); letter-spacing: -.03em; color: #fff; }
-.cal b small { font-size: 16px; font-weight: 500; color: var(--orange); letter-spacing: 0; margin-left: 4px; }
-.cal span { display: block; margin-top: 12px; font-size: 15px; color: #C9D0EA; line-height: 1.5; }
-@media (max-width: 860px) { .cal { grid-template-columns: 1fr 1fr; } .cal div:nth-child(2) { border-right: 0; } .cal div:nth-child(3) { padding-left: 0; } .cal div:nth-child(n+3) { border-top: 1px solid #343C63; } }
-@media (max-width: 520px) { .cal { grid-template-columns: 1fr; } .cal div { border-right: 0 !important; padding-left: 0 !important; } .cal div + div { border-top: 1px solid #343C63; } }
-
-/* features: text beside a real screen */
-section { scroll-margin-top: 80px; }
-.feat { padding: 88px 0 24px; }
-.feat > .wrap > h2 { max-width: 16em; }
-.row { display: grid; grid-template-columns: 5fr 7fr; gap: 56px; align-items: center; padding: 56px 0; border-bottom: 1px solid var(--rule); }
-.row:last-child { border-bottom: 0; }
-.row.flip { grid-template-columns: 7fr 5fr; }
-.row.flip .words { order: 2; }
-.row .words p { margin-top: 14px; color: var(--ink-2); }
-.row .words ul { margin: 16px 0 0; padding: 0; list-style: none; }
-.row .words li { padding: 7px 0 7px 26px; position: relative; color: var(--ink-2); }
-.row .words li::before { content: ""; position: absolute; left: 4px; top: 16px; width: 8px; height: 8px; border-radius: 50%; background: var(--orange); }
-.tag { display: inline-block; font: 600 13px/1 var(--display); color: var(--teal); background: #E0F5F6; padding: 6px 10px; border-radius: 8px; margin-bottom: 14px; }
-@media (max-width: 860px) { .row, .row.flip { grid-template-columns: 1fr; gap: 26px; padding: 40px 0; } .row.flip .words { order: 0; } }
-
-/* course */
-.course { padding: 72px 0; }
-.course .wrap { display: grid; grid-template-columns: 7fr 5fr; gap: 48px; align-items: center; }
-.course a.thumb { display: block; border-radius: 16px; overflow: hidden; box-shadow: 0 24px 60px -24px rgba(27, 33, 64, .45); position: relative; }
-.course a.thumb::after { content: ""; position: absolute; left: 50%; top: 50%; width: 84px; height: 84px; margin: -42px 0 0 -42px; border-radius: 50%; background: rgba(255, 122, 69, .95) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M9 6l10 6-10 6z' fill='white'/%3E%3C/svg%3E") center/38px no-repeat; }
-.course ol { margin: 18px 0 0; padding: 0; list-style: none; color: var(--ink-2); }
-.course ol li { padding: 3px 0; }
-.course ol b { font-family: var(--display); font-weight: 600; color: var(--ink); font-size: 15px; margin-right: 6px; }
-@media (max-width: 860px) { .course .wrap { grid-template-columns: 1fr; } }
-
-/* safety */
-.safe { background: var(--surface); border-block: 1px solid var(--rule); padding: 84px 0; }
-.safe .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 36px 48px; margin-top: 40px; }
-.safe .grid div { border-top: 3px solid var(--ink); padding-top: 16px; }
-.safe .grid p { margin-top: 8px; color: var(--ink-2); font-size: 16px; }
-.honest { margin-top: 44px; padding: 18px 22px; border-left: 4px solid var(--orange); background: #FFF5EF; border-radius: 0 12px 12px 0; color: var(--ink); max-width: 46em; }
-@media (max-width: 860px) { .safe .grid { grid-template-columns: 1fr; } }
-
-/* prices */
-.prices { padding: 88px 0; }
-.plans { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 40px; }
-.plan { background: var(--surface); border: 1px solid var(--rule); border-radius: 20px; padding: 32px; display: flex; flex-direction: column; gap: 16px; }
-.plan.firm { background: var(--ink); color: #fff; border-color: var(--ink); }
-.plan .who { font: 600 18px/1.2 var(--display); }
-.plan .amt { font: 700 56px/1 var(--display); letter-spacing: -.04em; }
-.plan .amt small { font: 500 17px/1.3 var(--text); letter-spacing: 0; color: var(--muted); display: block; margin-top: 8px; }
-.plan.firm .amt small { color: #B9C1DE; }
-.plan ul { margin: 0; padding-left: 20px; }
-.plan li { padding: 3px 0; }
-.plan.firm li { color: #DDE2F3; }
-.plan .btn { margin-top: auto; align-self: flex-start; }
-.addon { margin-top: 24px; display: flex; flex-wrap: wrap; gap: 8px 24px; align-items: baseline; padding: 20px 24px; border: 1px dashed #C7CFE5; border-radius: 16px; color: var(--ink-2); }
-.addon b { font-family: var(--display); color: var(--ink); }
-@media (max-width: 760px) { .plans { grid-template-columns: 1fr; } }
-
-/* contact + footer */
-.contact { background: var(--ink); color: #fff; padding: 84px 0; }
-.contact .wrap { display: grid; grid-template-columns: 1.2fr 1fr; gap: 40px; align-items: end; }
-.contact p { color: #C9D0EA; margin-top: 14px; max-width: 30em; }
-.contact .ways { display: grid; gap: 12px; }
-.contact .ways a { display: flex; justify-content: space-between; align-items: center; gap: 12px; color: #fff; text-decoration: none; padding: 18px 20px; border: 1px solid #39416A; border-radius: 14px; font-size: 17px; }
-.contact .ways a:hover { border-color: var(--orange); }
-.contact .ways a span { color: #9AA3C7; font-size: 14px; }
-@media (max-width: 860px) { .contact .wrap { grid-template-columns: 1fr; } }
-footer { background: #141933; color: #9AA3C7; font-size: 14px; padding: 26px 0; }
-footer .wrap { display: flex; flex-wrap: wrap; gap: 10px 26px; align-items: center; }
-footer a { color: #C9D0EA; text-decoration: none; }
-footer .grow { flex: 1; }
-</style>
+<title>VIKI Bookings | Run your whole hotel from one screen</title>
+<meta name="description" content="Rooms, restaurant, bar and money in one simple system. Bookings, the front desk, the till and the recon for hotels and guest houses. Made in Trinidad and Tobago. TT$1,200 a month for the whole hotel.">
+<meta name="theme-color" content="#0F1430">
+<meta property="og:type" content="website">
+<meta property="og:title" content="VIKI Bookings | Run your whole hotel from one screen">
+<meta property="og:description" content="Rooms, restaurant, bar and money in one simple system. Built in Trinidad and Tobago.">
+<meta property="og:url" content="https://vikisystems.live/bookings/">
+<meta property="og:image" content="https://vikisystems.live/assets/img/bookings-veranda.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%231B2140'/%3E%3Cpath d='M8 9h4.2l3.8 10.6L19.8 9H24l-6 15h-4z' fill='%23fff'/%3E%3Ccircle cx='24.5' cy='24.5' r='3.2' fill='%23FF7A45'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script>document.documentElement.classList.add("js")</script>
 </head>
-<body>
-<header class="top"><div class="wrap">
-  <a class="logo" href="#top" aria-label="VIKI Bookings home"><img src="/img/viki-bookings-logo.svg" alt="viki.bookings" width="140" height="27"></a>
-  <nav aria-label="Sections"><a href="#what">What it does</a><a href="#contact">Contact</a></nav>
-  <div class="right" style="display:flex;gap:16px;align-items:center"><a class="btn go small" href="#contact">Ask for a demo</a></div>
-</div></header>
-<main id="top">
-<section class="hero" style="padding-bottom:72px"><div class="wrap">
-  <h1>The hotel and guest house system<span class="dot" style="color:var(--orange)">.</span></h1>
-  <p class="lead">Bookings, the front desk, the restaurant and bar till, and the monthly reports, in one system. Made in Trinidad and Tobago for hotels and guest houses.</p>
-  <div class="acts"><a class="btn go" href="#contact">Ask for a demo</a><a class="btn line" href="/">VIKI Systems home</a></div>
-</div></section>
-<section class="safe" id="what"><div class="wrap">
-  <h2>What it does.</h2>
-  <div class="grid">
-    <div><h3>Bookings</h3><p>Takes your bookings, including the ones guests make online.</p></div>
-    <div><h3>Your own booking page</h3><p>Guests book straight from your hotel's own page.</p></div>
-    <div><h3>The front desk</h3><p>Runs the front desk, day to day.</p></div>
-    <div><h3>Restaurant and bar till</h3><p>The till for your restaurant and your bar.</p></div>
-    <div><h3>Monthly reports</h3><p>Your monthly reports, in the same system.</p></div>
-    <div><h3>Your own private copy</h3><p>Each hotel has its own copy at its own address. Your guests and figures are never mixed with anyone else's.</p></div>
+<body class="subpage bookings">
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="nav">
+  <div class="wrap nav__in">
+    <a class="nav__logo" href="#top" aria-label="VIKI Bookings, back to top"><img src="../assets/img/viki-bookings-logo-white.svg" alt="viki.bookings" width="196" height="30"></a>
+    <nav class="nav__links" aria-label="VIKI Bookings">
+      <a href="#what">What it does</a>
+      <a href="#frontdesk">Front desk</a>
+      <a href="#calendar">Calendar</a>
+      <a href="#till">Restaurant and bar</a>
+      <a href="#recon">Recon</a>
+      <a href="#price">Price</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="nav__cta">
+      <a class="btn btn--primary btn--sm" href="https://wa.me/18687877871?text=Hi%2C%20I%27d%20like%20a%20demo%20of%20VIKI%20Bookings%20for%20my%20hotel." target="_blank" rel="noopener">Ask for a demo</a>
+    </div>
+    <button class="nav__burger" aria-label="Open menu" aria-expanded="false" aria-controls="menu"><span></span></button>
+    <div class="nav__menu" id="menu">
+      <a href="#what">What it does</a>
+      <a href="#frontdesk">Front desk</a>
+      <a href="#calendar">Calendar</a>
+      <a href="#till">Restaurant and bar</a>
+      <a href="#recon">Recon</a>
+      <a href="#price">Price</a>
+      <a href="#contact">Contact</a>
+      <a href="../">VIKI Systems home</a>
+      <a class="btn btn--primary" href="https://wa.me/18687877871?text=Hi%2C%20I%27d%20like%20a%20demo%20of%20VIKI%20Bookings%20for%20my%20hotel." target="_blank" rel="noopener">Ask for a demo on WhatsApp</a>
+    </div>
   </div>
-  <p class="honest">Running the books too? <a href="/books/">VIKI Books</a> handles the accounting, payroll, VAT and hotel accommodation tax.</p>
-</div></section>
-<section class="contact" id="contact"><div class="wrap">
-  <div><h2 style="color:#fff">See it running for a hotel like yours.</h2>
-    <p>Message us and we will show you VIKI Bookings and set up your hotel's own copy.</p></div>
-  <div class="ways">
-    <a href="https://wa.me/18687877871">WhatsApp 1-868-787-7871 <span>Fastest</span></a>
-    <a href="mailto:vikisystem.live@gmail.com">vikisystem.live@gmail.com <span>Email</span></a>
-  </div>
-</div></section>
+</header>
+
+<main id="main">
+
+  <!-- HERO -->
+  <section class="phero" id="top">
+    <div class="orb" style="width:540px;height:540px;right:-140px;top:30px;background:rgba(14,143,156,.32)" aria-hidden="true"></div>
+    <div class="wrap phero__grid">
+      <div class="reveal">
+        <p class="eyebrow"><span class="dot"></span>VIKI Bookings</p>
+        <h1 class="display">Run your whole hotel from one screen<span class="o">.</span></h1>
+        <p class="lead">Rooms, restaurant, bar and money in one simple system. Bookings, the front desk, the restaurant and bar till, and the monthly reports. Built in Trinidad and Tobago for hotels and guest houses.</p>
+        <div class="cta-row">
+          <a class="btn btn--primary" href="https://wa.me/18687877871?text=Hi%2C%20I%27d%20like%20a%20demo%20of%20VIKI%20Bookings%20for%20my%20hotel." target="_blank" rel="noopener">Ask for a demo <span class="arr" aria-hidden="true">→</span></a>
+          <a class="btn btn--ghost" href="#calendar">Try the room calendar</a>
+        </div>
+        <p class="cta-note" style="margin-top:14px">TT$1,200 a month for the whole hotel. Any number of staff and devices.</p>
+      </div>
+
+      <div class="hero3d tilt-scene reveal" id="hero3d" role="img" aria-label="The VIKI Bookings front desk: 3 arriving today, 1 leaving, 7 rooms occupied tonight, and a list of what needs attention">
+        <div class="device p3d" data-tilt="7" data-rx="6" data-ry="-14">
+          <div class="device__bar"><i></i><i></i><i></i><span>your-hotel.vikisystems.live</span></div>
+          <div class="device__screen app app--bk p3d">
+            <div class="app__top">
+              <span class="app__logo">viki<i>.</i>bookings</span>
+              <span class="app__co"><span>S</span>Sea Breeze Guest House</span>
+              <span class="app__tabs"><span class="on">Today</span><span>Calendar</span><span>Bookings</span><span>Guests</span><span>Till</span><span>Recon</span></span>
+              <span class="app__new" style="background:#0F7B6C">New booking</span>
+            </div>
+            <div class="app__body p3d">
+              <p class="fd__hello pop" style="--k:.5">Good evening</p>
+              <p class="app__muted" style="font-size:11px">Thu, 5 Nov 2026 · Sea Breeze Guest House</p>
+              <div class="fd__stats p3d">
+                <div class="fd__stat pop" style="--k:1.8"><i style="background:#2BC46A"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 17l5-5-5-5M15 12H3M14 3h5a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-5"/></svg></i><span><b>3</b>arriving today</span></div>
+                <div class="fd__stat pop" style="--k:2.4"><i style="background:#FF9A1F"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h5M16 17l5-5-5-5M21 12H9"/></svg></i><span><b>1</b>leaving today</span></div>
+                <div class="fd__stat pop" style="--k:1.4"><i style="background:#3D7BFF"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18V8M3 14h18v4M21 14v-2a3 3 0 0 0-3-3h-7v5"/><circle cx="7" cy="11" r="2"/></svg></i><span><b>7</b>rooms occupied tonight</span></div>
+              </div>
+              <div class="fd__att pop" style="--k:.9">
+                <h6>Needs attention</h6>
+                <div><em>17</em>booking requests to confirm or decline</div>
+                <div><em>23</em>payments to check in the bank (TT$36,392.00)</div>
+                <div><em class="r">34</em>guests have left with money still owing (past year)</div>
+                <div><em>4</em>open restaurant or bar tabs not paid yet (TT$1,330.00)</div>
+              </div>
+            </div>
+          </div>
+          <span class="glare" aria-hidden="true"></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PAINS -->
+  <section class="section" id="what">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <p class="eyebrow"><span class="dot"></span>Sound familiar?</p>
+        <h2>Does this sound like your hotel<span class="o">?</span></h2>
+        <p class="lead">Tap a card to see how VIKI Bookings handles it.</p>
+      </div>
+      <div class="pains stagger">
+        <div class="flip pain" tabindex="0" role="button" aria-label="Bookings everywhere. Tap to see the answer.">
+          <div class="flip__in">
+            <div class="flip__face pain__front"><div class="ico ico--o"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h11v15H4z"/><path d="M9 5V3h11v15h-5"/><path d="M7 9h5M7 12h5M7 15h3"/></svg></div><h3>Bookings everywhere</h3><p>Notebooks, WhatsApp, Booking.com and Airbnb, all kept separately.</p><span class="pain__more">How VIKI fixes it ↻</span></div>
+            <div class="flip__face flip__back pain__back"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/></svg></div><h3>One calendar</h3><p>Your own booking page, plus Airbnb, Booking.com, Expedia and VRBO calendars kept in step. Bookings come in on their own.</p><span class="pain__more">↻</span></div>
+          </div>
+        </div>
+        <div class="flip pain" tabindex="0" role="button" aria-label="The recon by hand. Tap to see the answer.">
+          <div class="flip__in">
+            <div class="flip__face pain__front"><div class="ico ico--o"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M3 15h18M9 3v18"/></svg></div><h3>The recon by hand</h3><p>Every shift typed into a spreadsheet, and the cash still doesn't add up.</p><span class="pain__more">How VIKI fixes it ↻</span></div>
+            <div class="flip__face flip__back pain__back"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg></div><h3>The recon does itself</h3><p>Every payment and bill lands in the right shift. Staff type one thing: the cash they counted.</p><span class="pain__more">↻</span></div>
+          </div>
+        </div>
+        <div class="flip pain" tabindex="0" role="button" aria-label="Double bookings. Tap to see the answer.">
+          <div class="flip__in">
+            <div class="flip__face pain__front"><div class="ico ico--o"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18V8M3 14h18v4M21 14v-2a3 3 0 0 0-3-3h-7v5"/><circle cx="7" cy="11" r="2"/></svg></div><h3>Double bookings</h3><p>Two guests, one room, and an awkward phone call.</p><span class="pain__more">How VIKI fixes it ↻</span></div>
+            <div class="flip__face flip__back pain__back"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 4.5-3.4 8.3-8 9-4.6-.7-8-4.5-8-9V6z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg></div><h3>Never double-booked</h3><p>Click an empty day to book. A room can never be double-booked. Try it on the calendar below.</p><span class="pain__more">↻</span></div>
+          </div>
+        </div>
+        <div class="flip pain" tabindex="0" role="button" aria-label="Money you can't see. Tap to see the answer.">
+          <div class="flip__in">
+            <div class="flip__face pain__front"><div class="ico ico--o"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.6.3-1 .8-1 1.5v.7M12 17h.01"/></svg></div><h3>Money you can't see</h3><p>Who still owes? What did the bar sell today? Nobody is sure.</p><span class="pain__more">How VIKI fixes it ↻</span></div>
+            <div class="flip__face flip__back pain__back"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg></div><h3>Money in one place</h3><p>Payments, recon, expenses and reports. Who owes and what the bar sold, on the front desk screen.</p><span class="pain__more">↻</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PILLARS -->
+  <section class="section section--tight">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <h2>VIKI puts it all in one place<span class="o">.</span></h2>
+      </div>
+      <div class="pillars stagger">
+        <div class="pillar"><div class="pillar__img" style="background-image:url('../assets/img/bookings-veranda.jpg')" role="img" aria-label="A guest house veranda at dusk with lanterns and a sea view"></div><div class="pillar__body"><h3>Rooms</h3><p>Bookings, calendar, check-in and check-out, invoices.</p></div></div>
+        <div class="pillar"><div class="pillar__img" style="background-image:url('../assets/img/bookings-bar.jpg')" role="img" aria-label="A guest house restaurant and bar in the evening"></div><div class="pillar__body"><h3>Restaurant and bar</h3><p>Touch-screen till, kitchen screen, tabs, stock.</p></div></div>
+        <div class="pillar pillar--money"><div class="coins" aria-hidden="true"><div class="coins__stack"><i style="--z:0"></i><i style="--z:1"></i><i style="--z:2"></i><i style="--z:3"></i></div></div><div class="pillar__body"><h3>Money</h3><p>Payments, recon, expenses and reports.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FRONT DESK -->
+  <section class="section band" id="frontdesk">
+    <div class="wrap split">
+      <div class="reveal">
+        <p class="eyebrow"><span class="dot"></span>The front desk</p>
+        <h2>Your day at a glance<span class="o">.</span></h2>
+        <ul class="ticks">
+          <li>Who arrives, who leaves, how full you are tonight.</li>
+          <li>A “needs attention” list: requests to confirm, transfers to check, guests who owe.</li>
+          <li>Check in and check out in one click.</li>
+        </ul>
+        <p class="hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11V5a2 2 0 0 1 4 0v6M13 10a2 2 0 0 1 4 0v2M17 11a2 2 0 0 1 4 0v4a7 7 0 0 1-7 7h-1a7 7 0 0 1-6-3.4L4.6 15a2 2 0 0 1 3.4-2.1L9 14"/></svg>Go on, check a guest in.</p>
+      </div>
+      <div class="reveal">
+        <div class="app" style="border-radius:20px;padding:16px;box-shadow:0 40px 90px rgba(0,0,0,.45)" id="fd">
+          <div class="fd__stats">
+            <div class="fd__stat"><i style="background:#2BC46A"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 17l5-5-5-5M15 12H3M14 3h5a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-5"/></svg></i><span><b data-fd="arr">3</b>arriving today</span></div>
+            <div class="fd__stat"><i style="background:#FF9A1F"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h5M16 17l5-5-5-5M21 12H9"/></svg></i><span><b data-fd="lea">1</b>leaving today</span></div>
+            <div class="fd__stat"><i style="background:#3D7BFF"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18V8M3 14h18v4M21 14v-2a3 3 0 0 0-3-3h-7v5"/><circle cx="7" cy="11" r="2"/></svg></i><span><b data-fd="in">5</b>guests in the house</span></div>
+          </div>
+          <div class="fd__lists">
+            <div class="fd__box">
+              <h6>Arriving</h6>
+              <div class="guest"><span><b>Ravi Persad</b><small>Room 5 · 1 adult · owes TT$865.00</small></span><button type="button" data-fd-in>Check in</button></div>
+              <div class="guest"><span><b>Andre Joseph</b><small>Room 6 · 1 adult · owes TT$940.00</small></span><button type="button" data-fd-in>Check in</button></div>
+              <div class="guest"><span><b>Daniel Mohammed</b><small>Room 7 · 1 adult · owes TT$869.00</small></span><button type="button" data-fd-in>Check in</button></div>
+            </div>
+            <div class="fd__box">
+              <h6>Leaving</h6>
+              <div class="guest"><span><b>Sophie Laurent</b><small>Room 6 · owes TT$790.00</small></span><button type="button" data-fd-out>Check out</button></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CALENDAR -->
+  <section class="section" id="calendar">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <p class="eyebrow"><span class="dot"></span>The room calendar</p>
+        <h2>Every room, every day<span class="o">.</span></h2>
+        <p class="lead">Click an empty day to book. A room can never be double-booked. Try it: click any empty square, then try a night that's already taken.</p>
+      </div>
+      <div class="cal reveal" id="cal">
+        <div class="cal__head"><b>Room calendar</b><div class="cal__legend"><span>Confirmed</span><span class="p">Pending</span><span class="n">Your booking</span></div></div>
+        <div class="cal__scroll"><div class="cal__grid" id="calGrid"></div></div>
+        <div class="cal__msg" id="calMsg" role="status" aria-live="polite">Click an empty day to make a booking.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CHANNELS -->
+  <section class="section band" id="channels">
+    <div class="wrap split split--rev">
+      <div class="reveal">
+        <p class="eyebrow"><span class="dot"></span>Guests</p>
+        <h2>Bookings come in on their own<span class="o">.</span></h2>
+        <ul class="ticks">
+          <li>Your own booking page for your website and Instagram.</li>
+          <li>Airbnb, Booking.com, Expedia and VRBO calendars kept in step.</li>
+          <li>Confirmations, reminders and thank-you emails sent for you.</li>
+          <li>WhatsApp messages already written, one click to send.</li>
+        </ul>
+      </div>
+      <div class="chan reveal" id="chan" aria-label="Bookings arriving from your own page and the booking sites into one list" role="img">
+        <div class="chan__src">
+          <span style="--c:#FF7A45"><i></i>Your booking page</span>
+          <span style="--c:#F472B6"><i></i>Airbnb</span>
+          <span style="--c:#60A5FA"><i></i>Booking.com</span>
+          <span style="--c:#FBBF24"><i></i>Expedia</span>
+          <span style="--c:#34D399"><i></i>VRBO</span>
+        </div>
+        <div class="chan__dest device">
+          <div class="device__bar"><i></i><i></i><i></i><span>Bookings</span></div>
+          <div class="device__screen"><div class="chan__list" id="chanList"></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TILL -->
+  <section class="section" id="till">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <p class="eyebrow"><span class="dot"></span>Restaurant and bar</p>
+        <h2>A till your staff learn in minutes<span class="o">.</span></h2>
+        <p class="lead">Tap a table, tap the items, the kitchen gets the order. Pay now, keep a tab, or charge it to the guest's room. Stock goes down by itself as you sell.</p>
+      </div>
+      <div class="till reveal" id="tillApp">
+        <div class="till__floor" id="floor">
+          <h6>Inside <span class="app__muted" style="font:500 11px var(--font)">Tap a table</span></h6>
+          <button type="button" class="tbl" data-tbl="1"><span><b>1</b>4 seats</span></button>
+          <button type="button" class="tbl eat" data-tbl="2"><span><b>2</b>$330 · eating</span></button>
+          <button type="button" class="tbl round" data-tbl="3"><span><b>3</b>2 seats</span></button>
+          <button type="button" class="tbl round" data-tbl="4"><span><b>4</b>2 seats</span></button>
+          <button type="button" class="tbl tab" data-tbl="5"><span><b>5</b>$450 · bill printed</span></button>
+          <button type="button" class="tbl ready" data-tbl="6"><span><b>6</b>Food ready</span></button>
+        </div>
+        <div class="till__order">
+          <h6><span id="tillTitle">Table 1</span><span class="app__muted" style="font:500 11px var(--font)">Demo menu</span></h6>
+          <div class="menu" id="menu-items">
+            <button type="button" data-item="Pelau" data-p="85" data-s="18">Pelau<small>TT$85 · <span>18</span> left</small></button>
+            <button type="button" data-item="Bake and shark" data-p="70" data-s="12">Bake and shark<small>TT$70 · <span>12</span> left</small></button>
+            <button type="button" data-item="Callaloo soup" data-p="45" data-s="20">Callaloo soup<small>TT$45 · <span>20</span> left</small></button>
+            <button type="button" data-item="Grilled kingfish" data-p="120" data-s="9">Grilled kingfish<small>TT$120 · <span>9</span> left</small></button>
+            <button type="button" data-item="Rum punch" data-p="55" data-s="24">Rum punch<small>TT$55 · <span>24</span> left</small></button>
+            <button type="button" data-item="Fresh juice" data-p="30" data-s="30">Fresh juice<small>TT$30 · <span>30</span> left</small></button>
+          </div>
+          <div class="ticket" id="ticket"><div class="empty">Tap items to add them</div></div>
+          <div class="till__tot"><span>Total</span><span id="tillTot">TT$0.00</span></div>
+          <button type="button" class="till__send" id="tillSend" disabled>Send to the kitchen</button>
+          <div class="till__pay">
+            <button type="button" data-pay="now" disabled>Pay now</button>
+            <button type="button" data-pay="tab" disabled>Keep a tab</button>
+            <button type="button" data-pay="room" disabled>Charge to Room 5</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RECON -->
+  <section class="section band" id="recon">
+    <div class="wrap split">
+      <div class="reveal">
+        <p class="eyebrow"><span class="dot"></span>The recon</p>
+        <h2>The recon does itself<span class="o">.</span></h2>
+        <ul class="ticks">
+          <li>Every payment and bill lands in the right shift, AM or PM.</li>
+          <li>Staff type one thing: the cash they counted.</li>
+          <li>VIKI shows if the drawer is short or over. Print in one click.</li>
+          <li>A monthly statement is emailed to the owners.</li>
+        </ul>
+        <p class="hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11V5a2 2 0 0 1 4 0v6M13 10a2 2 0 0 1 4 0v2M17 11a2 2 0 0 1 4 0v4a7 7 0 0 1-7 7h-1a7 7 0 0 1-6-3.4L4.6 15a2 2 0 0 1 3.4-2.1L9 14"/></svg>Type a different cash count and watch.</p>
+      </div>
+      <div class="recon reveal" id="reconApp">
+        <div class="recon__top">
+          <b>Shift reconciliation<br><span class="app__muted" style="font:500 11px var(--font)">Sea Breeze Guest House · Sunday 25 October 2026</span></b>
+          <div class="recon__seg" role="group" aria-label="Shift"><button type="button" data-shift="am" aria-pressed="false">AM · 7 am–3 pm</button><button type="button" data-shift="pm" aria-pressed="true">PM · 3 pm–10 pm</button></div>
+        </div>
+        <div class="recon__cards">
+          <div><span>Total received</span><b data-r="total">TT$1,785.00</b><small data-r="totals">5 transactions</small></div>
+          <div><span>Hotel</span><b data-r="hotel">TT$950.00</b><small data-r="hotels">2 payments</small></div>
+          <div><span>Restaurant and bar</span><b data-r="bar">TT$835.00</b><small data-r="bars">3 bills · 5 guests</small></div>
+          <div><span>Cash expected</span><b data-r="exp">TT$775.00</b><small>from the till and desk</small></div>
+        </div>
+        <div class="recon__count">
+          <div><label for="cash">Cash counted in the drawer</label><div class="recon__in"><span>TT$</span><input id="cash" type="text" inputmode="decimal" value="817.00" autocomplete="off"></div></div>
+          <div class="recon__res over" id="reconRes" role="status" aria-live="polite"><b>+TT$42.00</b><span>Over: more cash than expected</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REAL SCREENS -->
+  <section class="section" id="screens">
+    <div class="wrap">
+      <div class="sec-head sec-head--center reveal">
+        <p class="eyebrow"><span class="dot"></span>The real thing</p>
+        <h2>See the real screens<span class="o">.</span></h2>
+        <p class="lead">These are actual VIKI Bookings screens. Drag to spin, or use the arrows.</p>
+      </div>
+      <div class="ring reveal" id="ring">
+        <div class="ring__in">
+          <div class="ring__item" style="--i:0" data-cap="The front desk" data-sub="Who arrives, who leaves, what needs attention"><div class="device device--shot"><div class="device__bar"><i></i><i></i><i></i><span>Today</span></div><div class="device__screen"><img src="../assets/img/shot-front-desk.jpg" alt="VIKI Bookings front desk screen" loading="lazy" draggable="false"></div></div></div>
+          <div class="ring__item" style="--i:1" data-cap="Room calendar" data-sub="Every room, every day"><div class="device device--shot"><div class="device__bar"><i></i><i></i><i></i><span>Room calendar</span></div><div class="device__screen"><img src="../assets/img/shot-room-calendar.jpg" alt="VIKI Bookings room calendar" loading="lazy" draggable="false"></div></div></div>
+          <div class="ring__item" style="--i:2" data-cap="Your own booking page" data-sub="Guests book from your website and Instagram"><div class="device device--shot"><div class="device__bar"><i></i><i></i><i></i><span>Booking page</span></div><div class="device__screen"><img src="../assets/img/shot-booking-page.jpg" alt="A hotel's own booking page made with VIKI Bookings" loading="lazy" draggable="false"></div></div></div>
+          <div class="ring__item" style="--i:3" data-cap="Restaurant and bar" data-sub="The table plan and till"><div class="device device--shot"><div class="device__bar"><i></i><i></i><i></i><span>Restaurant and bar</span></div><div class="device__screen"><img src="../assets/img/shot-restaurant-bar.jpg" alt="VIKI Bookings restaurant and bar table plan" loading="lazy" draggable="false"></div></div></div>
+          <div class="ring__item" style="--i:4" data-cap="Recon sheet" data-sub="Each shift, ready to print"><div class="device device--shot"><div class="device__bar"><i></i><i></i><i></i><span>Recon sheet</span></div><div class="device__screen"><img src="../assets/img/shot-recon.jpg" alt="VIKI Bookings shift reconciliation sheet" loading="lazy" draggable="false"></div></div></div>
+        </div>
+      </div>
+      <div class="ring__ctl">
+        <button type="button" id="ringPrev" aria-label="Previous screen"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>
+        <div class="ring__cap" id="ringCap" aria-live="polite">The front desk<small>Who arrives, who leaves, what needs attention</small></div>
+        <button type="button" id="ringNext" aria-label="Next screen"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- SAFE -->
+  <section class="section band" id="safe">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <p class="eyebrow"><span class="dot"></span>Safe and simple</p>
+        <h2>Your information is looked after<span class="o">.</span></h2>
+      </div>
+      <div class="safe stagger">
+        <div class="card" data-spot><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12a8 8 0 1 1-2.3-5.7M20 4v4h-4"/><path d="M12 8v4l3 2"/></svg></div><h3>Backed up every hour</h3><p>Daily copies kept for 30 days.</p></div>
+        <div class="card" data-spot><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V8l7-5 7 5v13"/><path d="M10 21v-5h4v5"/></svg></div><h3>Your own private system</h3><p>Each hotel has its own copy at its own address. Your data is kept apart from every other hotel.</p></div>
+        <div class="card" data-spot><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0"/><path d="M17 11l2 2 3.5-4"/></svg></div><h3>Each person signs in</h3><p>Owner, manager, desk, bar. Every action recorded.</p></div>
+        <div class="card" data-spot><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="14" height="10" rx="2"/><rect x="15" y="9" width="7" height="11" rx="1.5"/><path d="M6 18h6"/></svg></div><h3>Any device</h3><p>Computer, tablet or phone. Nothing to install.</p></div>
+        <div class="card" data-spot><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10L12 5 2 10l10 5z"/><path d="M6 12v5c3 2 9 2 12 0v-5"/></svg></div><h3>A practice hotel</h3><p>Staff learn without touching real bookings.</p></div>
+        <div class="card" data-spot><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.6.3-1 .8-1 1.5v.7M12 17h.01"/></svg></div><h3>Help on every screen</h3><p>Plain words, no training manual.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICE -->
+  <section class="section" id="price">
+    <div class="wrap split">
+      <div class="reveal">
+        <p class="eyebrow"><span class="dot"></span>One simple price</p>
+        <h2>Everything included, for the whole hotel<span class="o">.</span></h2>
+        <p class="lead" style="margin-top:16px">Any number of staff and devices.</p>
+      </div>
+      <div class="tilt-scene reveal">
+        <div class="price price--hot" data-tilt="5">
+          <span class="price__bg" aria-hidden="true"></span>
+          <p class="price__who">VIKI Bookings</p>
+          <p class="price__amt"><sup>TT$</sup>1,200</p>
+          <p class="price__per">a month, for the whole hotel</p>
+          <ul class="ticks ticks--light">
+            <li>Rooms, restaurant, bar and recon</li>
+            <li>Your own booking page and site sync</li>
+            <li>Guest emails sent for you</li>
+            <li>Hourly backups and every update</li>
+            <li>Day passes, quotations, car rentals</li>
+            <li>Support on WhatsApp</li>
+          </ul>
+          <a class="btn btn--primary" href="https://wa.me/18687877871?text=Hi%2C%20I%27d%20like%20a%20demo%20of%20VIKI%20Bookings%20for%20my%20hotel." target="_blank" rel="noopener">Ask for a demo</a>
+          <span class="glare" aria-hidden="true"></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STEPS -->
+  <section class="section band">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <h2>Getting started is easy<span class="o">.</span></h2>
+      </div>
+      <div class="steps stagger">
+        <div class="card step"><div class="step__n">1</div><h3>I set it up</h3><p>Your rooms, prices, menu and logo.</p></div>
+        <div class="card step"><div class="step__n">2</div><h3>Your staff practise</h3><p>On the practice hotel, at their own pace.</p></div>
+        <div class="card step"><div class="step__n">3</div><h3>You go live</h3><p>And I'm one WhatsApp away.</p></div>
+      </div>
+      <div class="sign reveal"><p class="sign__name">Zion Russell<small>VIKI Systems</small></p><a class="link-arrow" href="https://wa.me/18687877871" target="_blank" rel="noopener">WhatsApp 1-868-787-7871 <span class="arr">→</span></a></div>
+    </div>
+  </section>
+
+  <!-- CROSS SELL -->
+  <section class="section section--tight">
+    <div class="wrap">
+      <div class="glass cross reveal">
+        <div>
+          <img src="../assets/img/viki-books-logo-white.svg" alt="VIKI Books" width="146" height="28">
+          <h3 style="font-size:1.6rem">Running the books too?</h3>
+          <p>VIKI Books handles the accounting, payroll, VAT and hotel accommodation tax.</p>
+        </div>
+        <a class="btn btn--ghost" href="../books/">See VIKI Books <span class="arr" aria-hidden="true">→</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="section" id="contact">
+    <div class="wrap contact">
+      <div class="reveal">
+        <h2>See it running for a hotel like yours<span class="o">.</span></h2>
+        <p class="lead" style="margin-top:16px">Message us and we will show you VIKI Bookings and set up your hotel's own copy.</p>
+        <div class="contact__ways">
+          <a class="way" href="https://wa.me/18687877871?text=Hi%2C%20I%27d%20like%20a%20demo%20of%20VIKI%20Bookings%20for%20my%20hotel." target="_blank" rel="noopener">
+            <span class="way__icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.3c0-.1-.2-.2-.5-.3z"/></svg></span>
+            <span><b>WhatsApp 1-868-787-7871</b><small>Ask for a demo</small></span>
+            <span class="pill">Fastest</span>
+          </a>
+          <a class="way" href="mailto:vikisystem.live@gmail.com">
+            <span class="way__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M3.5 7l8.5 6 8.5-6"/></svg></span>
+            <span><b>vikisystem.live@gmail.com</b><small>Email</small></span>
+          </a>
+        </div>
+      </div>
+      <form class="glass form reveal" data-mailform novalidate>
+        <input type="hidden" name="product" value="VIKI Bookings">
+        <div class="form__row">
+          <div class="field"><label for="f-name">Your name</label><input class="input" id="f-name" name="name" autocomplete="name" required></div>
+          <div class="field"><label for="f-biz">Hotel or guest house</label><input class="input" id="f-biz" name="business" autocomplete="organization"></div>
+        </div>
+        <div class="field"><label for="f-phone">Phone (optional)</label><input class="input" id="f-phone" name="phone" type="tel" autocomplete="tel"></div>
+        <div class="field"><label for="f-msg">Tell us about your place</label><textarea class="input" id="f-msg" name="message" required placeholder="How many rooms, and do you have a restaurant or bar?"></textarea></div>
+        <div class="form__actions">
+          <button class="btn btn--primary" type="submit">Send by email</button>
+          <button class="btn btn--ghost" type="button" data-wa>Send on WhatsApp</button>
+        </div>
+        <div class="form__done" role="status">
+          <div class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg></div>
+          <h3>Your message is ready to send</h3>
+          <p class="lead" style="margin:10px auto 22px">Your email or WhatsApp opened with everything filled in. Press send there and it reaches us.</p>
+          <button class="btn btn--ghost btn--sm" type="button" data-again>Write another</button>
+        </div>
+      </form>
+    </div>
+  </section>
 </main>
-<footer><div class="wrap">
-  <span class="grow">&copy; 2026 VIKI Systems, Trinidad and Tobago. Makers of <a href="/books/">VIKI Books</a> and VIKI Bookings.</span><a href="/">VIKI Systems</a>
-</div></footer>
+
+<div class="kitchen" id="kitchen" role="status" aria-live="polite"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 13.9A4 4 0 0 1 7 6a5 5 0 0 1 10 0 4 4 0 0 1 1 7.9V20H6z"/><path d="M6 17h12"/></svg></i><span id="kitchenMsg">Kitchen screen</span></div>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer__in">
+      <div>
+        <img src="../assets/img/viki-bookings-logo-white.svg" alt="viki.bookings" width="196" height="30">
+        <p class="fine" style="max-width:360px">The hotel and guest house system. Made in Trinidad and Tobago by VIKI Systems.</p>
+      </div>
+      <div>
+        <h4>VIKI Systems</h4>
+        <ul><li><a href="../">VIKI Systems home</a></li><li><a href="../books/">VIKI Books</a></li></ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul><li><a href="https://wa.me/18687877871" target="_blank" rel="noopener">WhatsApp 1-868-787-7871</a></li><li><a href="mailto:vikisystem.live@gmail.com">vikisystem.live@gmail.com</a></li></ul>
+      </div>
+    </div>
+    <div class="footer__base"><span>© <span data-year>2026</span> VIKI Systems, Trinidad and Tobago</span><span>Airbnb, Booking.com, Expedia and VRBO are trademarks of their owners and are named only to say which calendars VIKI Bookings keeps in step.</span></div>
+  </div>
+</footer>
+
+<script src="../main.js"></script>
+<script src="bookings.js"></script>
 </body>
 </html>
