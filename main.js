@@ -150,50 +150,80 @@
     }
   });
 
-  /* ---- savings calculator (figures from the live VIKI Books page) ---- */
-  doc.querySelectorAll("[data-calc]").forEach(function (c) {
-    var QB_PER_CLIENT = 38 * 6.8, VK_PER_CLIENT = 79, QB_BIZ = 952, VK_BIZ = 599;
-    var range = c.querySelector("input[type=range]"), num = c.querySelector("input[type=number]");
-    var qbEl = c.querySelector("[data-out=qb]"), vkEl = c.querySelector("[data-out=vk]");
-    var qbLbl = c.querySelector("[data-out=qbl]"), vkLbl = c.querySelector("[data-out=vkl]");
-    var vkSmall = c.querySelector("[data-out=vks]");
-    var saveM = c.querySelector("[data-out=savem]"), saveY = c.querySelector("[data-out=savey]");
-    var extra = c.querySelector("[data-out=extra]"), nRow = c.querySelector(".calc__n");
-    var barQ = c.querySelector(".bar3d--qb"), barV = c.querySelector(".bar3d--vk");
-    var mode = "firm";
-    function render(instant) {
-      var qb, vk;
-      if (mode === "firm") {
-        var n = Math.max(1, Math.min(2000, parseInt(num.value, 10) || 1));
-        qb = n * QB_PER_CLIENT; vk = n * VK_PER_CLIENT;
-        qbLbl.textContent = "QuickBooks, cheapest plan"; vkLbl.textContent = "VIKI Books";
-        vkSmall.textContent = "a month, payroll and VAT included";
-        extra.textContent = "";
-      } else {
-        qb = QB_BIZ; vk = VK_BIZ;
-        qbLbl.textContent = "QuickBooks Plus (5 users)"; vkLbl.textContent = "VIKI Books (5 people)";
-        vkSmall.textContent = "a month, payroll, VAT and Read receipts included";
-        extra.textContent = " before QuickBooks' payroll charges. And QuickBooks cannot read receipts in Trinidad and Tobago.";
-      }
-      var o = { decimals: 0, prefix: "TT$", instant: instant, duration: 700 };
-      animateNumber(qbEl, Math.round(qb), o); animateNumber(vkEl, Math.round(vk), o);
-      animateNumber(saveM, Math.round(qb - vk), { decimals: 0, prefix: "TT$", suffix: " a month", instant: instant, duration: 700 });
-      animateNumber(saveY, Math.round((qb - vk) * 12), { decimals: 0, prefix: "TT$", suffix: " a year", instant: instant, duration: 700 });
-      if (barQ) { barQ.style.setProperty("--h", "88%"); barV.style.setProperty("--h", Math.max(6, (vk / qb) * 88).toFixed(1) + "%"); }
+  /* ---- chaos to order: paper pile flies into VIKI as the section scrolls by (no pinning) ---- */
+  doc.querySelectorAll("[data-chaos]").forEach(function (st) {
+    var rows = st.querySelectorAll(".chaos__row"), items = st.querySelectorAll(".cz"), data = [], active = false, queued = false;
+    var clamp = function (v) { return v < 0 ? 0 : v > 1 ? 1 : v; };
+    var ease = function (e) { return e < .5 ? 2 * e * e : 1 - Math.pow(-2 * e + 2, 2) / 2; };
+    function measure() {
+      st.style.setProperty("--pp", 1);
+      items.forEach(function (it) { it.style.transform = "none"; it.style.opacity = 1; });
+      data = Array.prototype.map.call(items, function (it, i) {
+        var r = it.getBoundingClientRect(), row = rows[+it.dataset.to].getBoundingClientRect(), cs = getComputedStyle(it);
+        return { el: it, to: +it.dataset.to,
+          dx: (row.left + row.width * 0.42) - (r.left + r.width / 2), dy: (row.top + row.height / 2) - (r.top + r.height / 2),
+          z: parseFloat(cs.getPropertyValue("--z")) || 0, rot: parseFloat(cs.getPropertyValue("--r")) || 0,
+          delay: (i / items.length) * 0.35 };
+      });
+      render();
     }
-    function syncRange() { range.style.setProperty("--p", ((range.value - range.min) / (range.max - range.min) * 100) + "%"); }
-    range.addEventListener("input", function () { num.value = range.value; syncRange(); render(true); });
-    num.addEventListener("input", function () { var v = parseInt(num.value, 10) || 1; range.value = Math.min(range.max, v); syncRange(); render(true); });
-    c.querySelectorAll(".seg button").forEach(function (b) {
-      b.addEventListener("click", function () {
-        mode = b.dataset.who;
-        c.querySelectorAll(".seg button").forEach(function (x) { x.setAttribute("aria-selected", x === b ? "true" : "false"); });
-        nRow.hidden = mode !== "firm";
-        render(false);
+    function render() {
+      queued = false;
+      var vh = innerHeight, r = st.getBoundingClientRect();
+      var start = vh * 0.92, end = vh * 0.5 - r.height / 2;
+      var p = reduce ? 1 : clamp((start - r.top) / Math.max(1, start - end));
+      st.style.setProperty("--pp", ease(clamp(p * 1.4)).toFixed(3));
+      var rowMin = [1, 1, 1, 1];
+      data.forEach(function (d) {
+        var e = ease(clamp((p - d.delay) / 0.6));
+        d.el.style.transform = "translate3d(" + (d.dx * e).toFixed(1) + "px," + (d.dy * e).toFixed(1) + "px," + (d.z * (1 - e)).toFixed(1) + "px) rotate(" + (d.rot * (1 - e)).toFixed(2) + "deg) scale(" + (1 - 0.75 * e).toFixed(3) + ")";
+        d.el.style.opacity = e > 0.8 ? ((1 - e) / 0.2).toFixed(3) : 1;
+        rowMin[d.to] = Math.min(rowMin[d.to], e);
+      });
+      rows.forEach(function (row, i) { row.classList.toggle("on", rowMin[i] > 0.97); });
+      st.classList.toggle("done", p > 0.999);
+    }
+    var onScroll = function () { if (active && !queued) { queued = true; requestAnimationFrame(render); } };
+    if ("IntersectionObserver" in window) {
+      new IntersectionObserver(function (es) { es.forEach(function (e) { active = e.isIntersecting; if (active) onScroll(); }); }, { rootMargin: "20% 0px 20% 0px" }).observe(st);
+    } else active = true;
+    addEventListener("scroll", onScroll, { passive: true });
+    var rt; addEventListener("resize", function () { clearTimeout(rt); rt = setTimeout(measure, 150); });
+    if (doc.readyState === "complete") measure(); else addEventListener("load", measure);
+    measure();
+  });
+
+  /* ---- "ask this of any system" checklist: visitor scores their own system ---- */
+  doc.querySelectorAll("[data-check]").forEach(function (c) {
+    var rows = c.querySelectorAll(".checkq__row"), total = rows.length;
+    var scoreEl = c.querySelector("[data-score]"), meter = c.querySelector("[data-meter]"), msg = c.querySelector("[data-msg]");
+    function update() {
+      var answered = 0, yes = 0;
+      rows.forEach(function (r) {
+        var on = r.querySelector("[aria-pressed=true]");
+        if (on) { answered++; if (on.dataset.v === "1") yes++; }
+      });
+      scoreEl.textContent = answered ? yes + " of " + total : "–";
+      meter.style.width = (answered ? (yes / total) * 100 : 0) + "%";
+      if (!answered) msg.textContent = "Tap Yes or No for the system you use now.";
+      else if (answered < total) msg.textContent = answered + " of " + total + " answered. Keep going.";
+      else if (yes === total) msg.textContent = "Your system does all " + total + ". VIKI Books does too, made here and priced in TT dollars.";
+      else msg.innerHTML = "Your system does " + yes + " of " + total + ". <b>VIKI Books does all " + total + ".</b> Try it free for 30 days and see the difference.";
+      c.classList.toggle("done", answered === total);
+    }
+    rows.forEach(function (r) {
+      var btns = r.querySelectorAll(".yn button");
+      btns.forEach(function (b) {
+        b.addEventListener("click", function () {
+          btns.forEach(function (x) { x.setAttribute("aria-pressed", x === b ? "true" : "false"); });
+          r.classList.toggle("no", b.dataset.v === "0");
+          r.classList.toggle("yes", b.dataset.v === "1");
+          update();
+        });
       });
     });
-    syncRange(); render(true);
-    onVisible(c, function () { render(false); });
+    onVisible(c, function () { c.classList.add("lit"); });
+    update();
   });
 
   /* ---- contact forms: email + WhatsApp, nothing stored ---- */
