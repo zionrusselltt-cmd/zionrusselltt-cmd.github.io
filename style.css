@@ -1164,6 +1164,8 @@ h1, h2, .display { font-weight: 600; letter-spacing: -.025em; }
 .quote figcaption span { font-size: .86rem; color: #2F6BEA; font-weight: 500; }
 .quote--bk figcaption span { color: #0F7B6C; }
 .quote--solo { max-width: 760px; margin: 0 auto; text-align: center; }
+.quotes__also { margin-top: 28px; text-align: center; color: #4B4F5A; font-size: .98rem; }
+.quotes__also b { color: #0E1015; font-weight: 600; }
 .quote--solo blockquote { font: 600 clamp(1.3rem, 2.4vw, 1.75rem)/1.45 var(--font-head); letter-spacing: -.01em; }
 .quote--solo figcaption { justify-items: center; }
 
