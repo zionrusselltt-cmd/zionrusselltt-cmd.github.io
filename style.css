@@ -959,7 +959,7 @@ body.video-failed .bg-video { display: none; }
 .scene__video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity .6s; }
 .scene.has-video .scene__video { opacity: 1; }
 .scene.has-video .scene__img { opacity: 0 !important; transition: opacity .6s; }
-@media (max-width: 900px) { .scene__video { display: none; } }
+@media (max-width: 900px) { .scene__video { object-position: 64% center; } }
 .scene__tint { position: absolute; inset: 0; pointer-events: none;
   background: linear-gradient(90deg, rgba(9,12,32,.86) 0%, rgba(9,12,32,.62) 30%, rgba(9,12,32,.12) 58%, rgba(9,12,32,0) 70%), linear-gradient(0deg, rgba(9,12,32,.45), rgba(9,12,32,0) 28%); }
 .scene::after { content: ""; position: absolute; inset: 0; background: var(--bg); opacity: calc(var(--dim, 0) * .92); pointer-events: none; }

@@ -81,16 +81,23 @@
   /* ---- scroll video: loaded as a Blob on desktop only, gated seeks so it never piles up ---- */
   var video = document.getElementById("sceneVideo"), videoReady = false;
   var seekBusy = false, pendingTime = null, lastT = -1;
+  var busySince = 0;
   function requestSeek(t) {
     if (Math.abs(t - lastT) < 0.02) return;
+    // a seek that never reported back (browsers skip "seeked" for some jumps): release it
+    if (seekBusy && performance.now() - busySince > 400) seekBusy = false;
     if (seekBusy) { pendingTime = t; return; }
-    seekBusy = true; lastT = t; video.currentTime = t;
+    lastT = t;
+    // already showing this moment: nothing to wait for (Chrome sends no "seeked" event here)
+    if (Math.abs(video.currentTime - t) < 0.001) return;
+    seekBusy = true; busySince = performance.now(); video.currentTime = t;
   }
   if (video) {
     video.addEventListener("seeked", function () { seekBusy = false; if (pendingTime !== null) { var t = pendingTime; pendingTime = null; requestSeek(t); } });
     video.addEventListener("error", function () { seekBusy = false; pendingTime = null; videoReady = false; scene.classList.remove("has-video"); });
-    if (desktop.matches && !reduce) {
-      fetch("assets/office.mp4").then(function (res) { if (!res.ok) throw 0; return res.blob(); }).then(function (b) {
+    if (!reduce) {
+      // phones get a lighter 960px copy (2.5 MB); computers get the 1600px copy
+      fetch(desktop.matches ? "assets/office.mp4?v=20261112" : "assets/office-m.mp4?v=20261112").then(function (res) { if (!res.ok) throw 0; return res.blob(); }).then(function (b) {
         video.src = URL.createObjectURL(b);
         video.addEventListener("loadedmetadata", function () { videoReady = true; scene.classList.add("has-video"); scene.style.setProperty("--zoom", 1); render(); }, { once: true });
         video.load();
@@ -100,7 +107,13 @@
   window.__sceneVideo = video;
 
   var queued = false;
-  function onScroll() { if (!queued) { queued = true; requestAnimationFrame(render); } }
+  function onScroll() {
+    if (queued) return;
+    queued = true;
+    requestAnimationFrame(render);
+    // backup: if a browser holds back animation frames, still update within 60 ms
+    setTimeout(function () { if (queued) render(); }, 60);
+  }
   addEventListener("scroll", onScroll, { passive: true });
   addEventListener("resize", onScroll, { passive: true });
   render();
