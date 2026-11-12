@@ -227,10 +227,12 @@
   });
 
   /* ---- contact forms: email + WhatsApp, nothing stored ---- */
-  var EMAIL = "vikisystem.live@gmail.com", WA = "18687877871";
+  var EMAIL = "info@vikisystems.live", WA = "18687877871";
   function formText(f) {
-    var g = function (n) { var el = f.querySelector("[name=" + n + "]"); return el ? el.value.trim() : ""; };
-    var lines = ["Name: " + g("name")];
+    var g = function (n) { var el = f.querySelector("[name=" + n + "]:checked") || f.querySelector("[name=" + n + "]:not([type=radio])"); return el ? el.value.trim() : ""; };
+    var lines = [];
+    if (g("topic")) lines.push("About: " + g("topic"));
+    lines.push("Name: " + g("name"));
     if (g("business")) lines.push("Business: " + g("business"));
     if (g("product")) lines.push("Interested in: " + g("product"));
     if (g("phone")) lines.push("Phone: " + g("phone"));
@@ -241,7 +243,8 @@
     f.addEventListener("submit", function (e) {
       e.preventDefault();
       if (!f.reportValidity()) return;
-      var subject = "Website message from " + (f.querySelector("[name=name]").value.trim() || "a visitor");
+      var topic = f.querySelector("[name=topic]:checked");
+      var subject = (topic ? topic.value + ": " : "Website message: ") + (f.querySelector("[name=name]").value.trim() || "a visitor");
       window.location.href = "mailto:" + EMAIL + "?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(formText(f));
       f.classList.add("sent");
     });

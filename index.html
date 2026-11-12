@@ -3,60 +3,26 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>VIKI Systems | Software for Trinidad and Tobago businesses</title>
-<meta name="description" content="VIKI Books and VIKI Bookings. Accounting, payroll, VAT, and hotel software made in Trinidad and Tobago, for the way businesses here work: BIR, NIS, VAT, room tax and all.">
-<meta name="theme-color" content="#0F1430">
+<title>VIKI Systems | Technology that moves business forward</title>
+<meta name="description" content="VIKI Systems builds software that simplifies how businesses run. VIKI Books for accounting, payroll and VAT, and VIKI Bookings for hotels and guest houses. Made in Trinidad and Tobago.">
+<meta name="theme-color" content="#0A0B0E">
 <meta property="og:type" content="website">
-<meta property="og:title" content="VIKI Systems | Software for Trinidad and Tobago businesses">
-<meta property="og:description" content="Made here, for the way businesses here work: BIR, NIS, VAT, room tax and all.">
+<meta property="og:title" content="VIKI Systems | Technology that moves business forward">
+<meta property="og:description" content="VIKI Books for accounting, payroll and VAT. VIKI Bookings for hotels and guest houses. Made in Trinidad and Tobago.">
 <meta property="og:url" content="https://vikisystems.live/">
-<meta property="og:image" content="https://vikisystems.live/assets/img/hero.jpg">
+<meta property="og:image" content="https://vikisystems.live/assets/img/books-home.jpg">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%231B2140'/%3E%3Cpath d='M8 9h4.2l3.8 10.6L19.8 9H24l-6 15h-4z' fill='%23fff'/%3E%3Ccircle cx='24.5' cy='24.5' r='3.2' fill='%23FF7A45'/%3E%3C/svg%3E">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%2314161C'/%3E%3Cpath d='M8 9h4.2l3.8 10.6L19.8 9H24l-6 15h-4z' fill='%23fff'/%3E%3Ccircle cx='24.5' cy='24.5' r='3.2' fill='%23FF7A45'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
-<link rel="preload" as="image" href="assets/img/office-start.jpg" media="(min-width: 901px)">
-<link rel="preload" as="image" href="assets/img/office-start-sm.jpg" media="(max-width: 900px)">
-<link rel="stylesheet" href="style.css?v=20261112b">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@500;600;700&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css?v=20261113d">
+<link rel="stylesheet" href="stage.css?v=20261113d">
+<link rel="stylesheet" href="site.css?v=20261113d">
 <script>document.documentElement.classList.add("js")</script>
 </head>
-<body class="home">
+<body class="home home--v4">
 <a class="skip" href="#page">Skip to content</a>
-
-<!-- Scene: the Port of Spain office. Two frames now; the scroll video drops in here later. -->
-<div class="scene" id="scene" aria-hidden="true">
-  <div class="scene__img scene__img--start"></div>
-  <div class="scene__img scene__img--end" id="sceneEnd"></div>
-  <video class="scene__video" id="sceneVideo" muted playsinline preload="none" tabindex="-1"></video>
-  <div class="scene__tint"></div>
-</div>
-
-<!-- 3D layer over the scene: VIKI doing the work (desktop only) -->
-<div class="fx" id="fx" aria-hidden="true">
-  <div class="fx__rcpt" data-i="0" style="--sx:.70;--sy:.80;--fx:.50;--fy:.24;--r:-14"><b>SEASIDE GROCERY</b><span>21/10/2026 · #004817</span><span>RICE 10KG Z · 189.00</span><span>TOTAL 315.95</span><em>Read ✓ VAT TT$6.94</em></div>
-  <div class="fx__rcpt" data-i="1" style="--sx:.76;--sy:.84;--fx:.57;--fy:.36;--r:10"><b>ISLAND HARDWARE</b><span>22/10/2026 · #11902</span><span>PAINT 1GAL · 245.00</span><span>TOTAL 283.00</span><em>Read ✓ VAT TT$31.44</em></div>
-  <div class="fx__rcpt" data-i="2" style="--sx:.81;--sy:.78;--fx:.49;--fy:.50;--r:-6"><b>BAYSIDE FUEL</b><span>23/10/2026 · #7781</span><span>FUEL Z · 300.00</span><span>TOTAL 300.00</span><em>Read ✓ Zero-rated</em></div>
-  <div class="fx__rcpt" data-i="3" style="--sx:.66;--sy:.86;--fx:.58;--fy:.62;--r:16"><b>OFFICE SUPPLIES LTD</b><span>24/10/2026 · #3307</span><span>PAPER A4 · 112.50</span><span>TOTAL 112.50</span><em>Read ✓ VAT TT$12.50</em></div>
-  <div class="fx__note" data-n="0" style="--sx:.73;--sy:.75;--r:-8">PAYE and NIS by the 15th!</div>
-  <div class="fx__note fx__note--pink" data-n="1" style="--sx:.79;--sy:.72;--r:7">VAT due on the 25th</div>
-  <div class="fx__dash" id="fxDash">
-    <div class="fx__top"><b>viki<i>.</i>books</b><span>Coral Cove Guest House</span></div>
-    <div class="fx__money"><span>Money in the bank</span><b>TT$<span id="fxMoney">0.00</span></b></div>
-    <div class="fx__rows">
-      <div class="fx__row" data-row="0"><span>Receipts read from photos</span><b>4 of 4</b><i></i></div>
-      <div class="fx__row" data-row="1"><span>Bank matched</span><b>TT$0.00 difference</b><i></i></div>
-      <div class="fx__row" data-row="2"><span>Payroll posted</span><b>NIS, PAYE, HS</b><i></i></div>
-      <div class="fx__row" data-row="3"><span>VAT return</span><b>Every box filled</b><i></i></div>
-    </div>
-    <div class="fx__cal" id="fxCal">
-      <div><b>15th</b><span>PAYE and NIS</span><i></i></div>
-      <div><b>25th</b><span>VAT return</span><i></i></div>
-      <div><b>4 Jan</b><span>NIS change</span><i></i></div>
-      <div><b>28 Feb</b><span>TD4s</span><i></i></div>
-    </div>
-  </div>
-</div>
 
 <header class="nav">
   <div class="wrap nav__in">
@@ -64,86 +30,77 @@
     <nav class="nav__links" aria-label="Main">
       <a href="books/">VIKI Books</a>
       <a href="bookings/">VIKI Bookings</a>
-      <a href="#story">How it works</a>
-      <a href="#deadlines">Deadlines</a>
-      <a href="#contact">Contact</a>
+      <a href="pricing/">Pricing</a>
+      <a href="trust/">Trust</a>
+      <a href="about/">About</a>
+      <a href="contact/">Contact</a>
     </nav>
     <div class="nav__cta">
-      <a class="btn btn--primary btn--sm" href="https://books.vikisystems.live/#/signup">Start free trial</a>
+      <a class="btn btn--line btn--sm" href="https://books.vikisystems.live/">Sign in</a>
+      <a class="btn btn--primary btn--sm" href="pricing/">Get started</a>
     </div>
     <button class="nav__burger" aria-label="Open menu" aria-expanded="false" aria-controls="menu"><span></span></button>
     <div class="nav__menu" id="menu">
       <a href="books/">VIKI Books</a>
       <a href="bookings/">VIKI Bookings</a>
-      <a href="#story">How it works</a>
-      <a href="#deadlines">Deadlines</a>
-      <a href="#contact">Contact</a>
-      <a class="btn btn--primary" href="https://books.vikisystems.live/#/signup">Start a 30-day free trial</a>
+      <a href="pricing/">Pricing</a>
+      <a href="trust/">Trust and security</a>
+      <a href="about/">About VIKI Systems</a>
+      <a href="contact/">Contact</a>
+      <a class="btn btn--line" href="https://books.vikisystems.live/">Sign in to VIKI Books</a>
+      <a class="btn btn--primary" href="pricing/">Get started</a>
     </div>
   </div>
 </header>
 
 <main id="page">
 
-  <!-- STORY: the hero and the scroll story over the Port of Spain office -->
-  <div class="story" id="story">
-    <section class="hero" id="top">
-      <div class="wrap">
-        <div class="hero__copy">
-          <p class="eyebrow"><span class="dot"></span>Made in Trinidad and Tobago</p>
-          <h1 class="display">Software for Trinidad and Tobago businesses<span class="o">.</span></h1>
-          <p class="lead">Made here, for the way businesses here work: BIR, NIS, VAT, room tax and all.</p>
-          <div class="cta-row">
-            <a class="btn btn--primary" href="books/">VIKI Books <span class="arr" aria-hidden="true">→</span></a>
-            <a class="btn btn--ghost" href="bookings/">VIKI Bookings <span class="arr" aria-hidden="true">→</span></a>
+  <!-- HERO: the promise, then the live VIKI ecosystem console -->
+  <section class="hx" id="top">
+    <div class="hx__bg" aria-hidden="true"><i class="g2"></i><i class="g1"></i><i class="grid"></i></div>
+    <div class="wrap">
+      <div class="hx__copy">
+        <p class="eyebrow"><span class="dot"></span><span class="hide-sm">VIKI Systems ·&nbsp;</span>Made in Trinidad and Tobago</p>
+        <h1 class="ink">Technology that moves business forward<span class="o">.</span></h1>
+        <p class="lead">Intelligent software that simplifies operations, strengthens financial control and helps businesses grow. Starting with accounting, payroll and VAT, and the way hotels and guest houses run.</p>
+        <div class="cta-row">
+          <a class="btn btn--white" href="#ecosystem">Explore our solutions <span class="arr" aria-hidden="true">→</span></a>
+          <a class="btn btn--line" href="pricing/">Get started</a>
+        </div>
+        <p class="hx__meta">VIKI Books: 30 days free, no card needed · Prices in TT dollars</p>
+      </div>
+
+      <div class="console" data-console data-dur="14500">
+        <div class="console__tabs" role="tablist" aria-label="See a VIKI system at work">
+          <button class="console__tab" role="tab" id="tab-books" data-k="books" aria-controls="panel-books" aria-selected="true"><i></i>VIKI Books<span class="bar"></span></button>
+          <button class="console__tab" role="tab" id="tab-bk" data-k="bookings" aria-controls="panel-bk" aria-selected="false" tabindex="-1"><i></i>VIKI Bookings<span class="bar"></span></button>
+        </div>
+        <div class="console__panel" role="tabpanel" id="panel-books" aria-labelledby="tab-books">
+          <div class="vs-stage" data-vs="books" role="img" aria-label="VIKI Books at work: a late invoice gets a reminder, a receipt photo is read into an expense, and the VAT return is ready with every box filled">
+            <img class="vs-fallback" src="assets/img/books-home.jpg" alt="" width="1200" height="675">
           </div>
         </div>
-      </div>
-      <div class="scroll-cue" aria-hidden="true"><i></i>Scroll to see VIKI at work</div>
-    </section>
-
-    <div class="wrap story__steps">
-      <p class="story__intro reveal">Most accounting software is built for somewhere else. VIKI was <span class="o">made here.</span> Watch it clear the desk.</p>
-
-      <div class="flip story__card" data-story-card>
-        <div class="flip__in">
-          <div class="flip__face story__face"><span class="story__tag story__tag--bad">The problem</span><h3>A shoebox of receipts to type in</h3><p>Every supplier, date and VAT amount, one by one.</p></div>
-          <div class="flip__face flip__back story__face story__face--ok"><span class="story__tag">VIKI Books</span><h3>Read from photos</h3><p>Photograph a month of receipts. VIKI fills in the supplier, date, items and VAT. You check it and save.</p></div>
+        <div class="console__panel" role="tabpanel" id="panel-bk" aria-labelledby="tab-bk" hidden>
+          <div class="vs-stage" data-vs="bookings" role="img" aria-label="VIKI Bookings at work: a guest is checked in, the counts update, and a booking from the hotel's own page is confirmed with an email to the guest">
+            <img class="vs-fallback" src="assets/img/shot-front-desk.jpg" alt="" width="1200" height="750" loading="lazy">
+          </div>
         </div>
-      </div>
-
-      <div class="flip story__card" data-story-card>
-        <div class="flip__in">
-          <div class="flip__face story__face"><span class="story__tag story__tag--bad">The problem</span><h3>The bank statement doesn't match</h3><p>Ticking off lines by hand, and the bank a day behind your books.</p></div>
-          <div class="flip__face flip__back story__face story__face--ok"><span class="story__tag">VIKI Books</span><h3>Matched in one click</h3><p>Every line already has its match. Accept them all and reconcile to a difference of TT$0.00.</p></div>
+        <div class="nodes" data-nodes="books">
+          <div class="node node--l1"><b>Bank matching</b><span>Reconcile to TT$0.00</span></div>
+          <div class="node node--l2"><b>Payroll</b><span>NIS, PAYE and health surcharge</span></div>
+          <div class="node node--r1"><b>VAT return</b><span>Box by box, like the BIR form</span></div>
+          <div class="node node--r2"><b>Receipts</b><span>Read from a photo</span></div>
         </div>
-      </div>
-
-      <div class="flip story__card" data-story-card>
-        <div class="flip__in">
-          <div class="flip__face story__face"><span class="story__tag story__tag--bad">The problem</span><h3>PAYE and NIS due on the 15th</h3><p>Rates to look up, deductions to work out, and NIS changing on 4 January 2027.</p></div>
-          <div class="flip__face flip__back story__face story__face--ok"><span class="story__tag">VIKI Books</span><h3>Worked out every pay run</h3><p>NIS, PAYE and health surcharge at the rates in force on the pay date. It switches to the new NIS rate by itself.</p></div>
+        <div class="nodes" data-nodes="bookings" hidden>
+          <div class="node node--l1"><b>Room calendar</b><span>Never double-booked</span></div>
+          <div class="node node--l2"><b>Your booking page</b><span>Booking sites kept in step</span></div>
+          <div class="node node--r1"><b>Restaurant and bar</b><span>A till staff learn in minutes</span></div>
+          <div class="node node--r2"><b>Cash-up</b><span>Short or over, every shift</span></div>
         </div>
-      </div>
-
-      <div class="flip story__card" data-story-card>
-        <div class="flip__in">
-          <div class="flip__face story__face"><span class="story__tag story__tag--bad">The problem</span><h3>The VAT return on a calculator</h3><p>Adding up sales and purchases by hand before the 25th.</p></div>
-          <div class="flip__face flip__back story__face story__face--ok"><span class="story__tag">VIKI Books</span><h3>Every box filled for you</h3><p>Numbered the same as the BIR form, so you just copy the figures onto e-Tax.</p></div>
-        </div>
-      </div>
-
-      <div class="story__end reveal">
-        <h2>Your books, done<span class="o">.</span> Made here<span class="o">.</span></h2>
-        <p class="lead">Accounting, payroll and VAT for Trinidad and Tobago businesses and the accountants who look after them. And a hotel system for guest houses.</p>
-        <div class="cta-row">
-          <a class="btn btn--primary" href="https://books.vikisystems.live/#/signup">Start a 30-day free trial</a>
-          <a class="btn btn--ghost" href="bookings/">VIKI Bookings for hotels</a>
-        </div>
-        <p class="cta-note" style="margin-top:12px">No card needed.</p>
+        <p class="console__cap">Real VIKI screens, acted out with sample data. Nothing here touches a customer account.</p>
       </div>
     </div>
-  </div>
+  </section>
 
   <!-- TRUST STRIP -->
   <div class="trust" aria-label="At a glance">
@@ -151,207 +108,248 @@
       <span><b>Made in</b>Trinidad and Tobago</span>
       <span><b>Priced in</b>TT dollars</span>
       <span><b>30 days</b>free, no card needed</span>
-      <span><b>Every night</b>a full backup</span>
+      <span><b>Backed up</b>every night and every hour</span>
       <span><b>WhatsApp</b>help from a person here</span>
     </div>
   </div>
 
-  <div class="panel">
+  <!-- THE VIKI ECOSYSTEM -->
+  <section class="section eco" id="ecosystem">
+    <div class="wrap">
+      <div class="sh reveal">
+        <p class="eyebrow"><span class="dot"></span>The VIKI ecosystem</p>
+        <h2>Two systems<span class="o">.</span> One way of working<span class="o">.</span></h2>
+        <p class="lead">Each VIKI system is built around the real work: the BIR forms, the NIS rates, the front desk at check-in time. Plain words on every screen, and a person here when you need help.</p>
+      </div>
 
-    <!-- PRODUCTS -->
-    <section class="section" id="products">
-      <div class="wrap">
-        <div class="sec-head reveal">
-          <p class="eyebrow"><span class="dot"></span>Two systems</p>
-          <h2>Pick the one built for your business<span class="o">.</span></h2>
+      <article class="px reveal" id="books">
+        <div class="px__copy">
+          <img class="px__logo" src="assets/img/viki-books-logo-white.svg" alt="VIKI Books" width="156" height="30">
+          <h3>Accounting, payroll and VAT, done the Trinidad and Tobago way.</h3>
+          <p>An accounting and business management platform for businesses, and for the accounting firms that look after them. Your finances, your staff costs and your tax figures, kept in one place and in step with the local rules.</p>
+          <ul class="feats">
+            <li><b>Bank matching</b><span>Every bank line already has its match. Accept them all and reconcile to a difference of TT$0.00.</span></li>
+            <li><b>Quote, invoice, paid</b><span>Send quotes and invoices, see who owes you, and send reminders.</span></li>
+            <li><b>Payroll</b><span>NIS, PAYE and health surcharge at the rates in force on each pay date. It switches to the new NIS rate on 4 January 2027 by itself.</span></li>
+            <li><b>VAT return</b><span>Every box filled in from your books, in the order of the BIR form.</span></li>
+            <li><b>Read receipts</b><span>Photograph receipts and VIKI fills in the supplier, date, items and VAT.</span></li>
+            <li><b>Accounting firms</b><span>Every client company on one page, combined reports, and access by client.</span></li>
+          </ul>
+          <p class="px__price"><b>TT$599</b>a month for a business · <b>TT$79</b>a month per client for accounting firms</p>
+          <div class="cta-row">
+            <a class="btn btn--primary" href="books/">Explore VIKI Books <span class="arr" aria-hidden="true">→</span></a>
+            <a class="btn btn--line" href="https://books.vikisystems.live/#/signup">Start a 30-day free trial</a>
+          </div>
         </div>
-        <div class="products">
-          <div class="tilt-scene reveal">
-            <a class="prod prod--books" href="books/" data-tilt="6">
-              <span class="prod__bg" aria-hidden="true"></span>
-              <img class="prod__logo" src="assets/img/viki-books-logo-white.svg" alt="VIKI Books" width="156" height="30">
-              <p class="prod__kick">Accounting, payroll and VAT</p>
-              <p>For businesses and accounting firms. Invoices, bank matching, NIS, PAYE and health surcharge, and VAT laid out like the BIR form.</p>
-              <div class="prod__stage" aria-hidden="true">
-                <div class="mini mini--a"><span>Money in the bank</span><b><small>TT$</small> <span class="bl" style="display:inline;font-size:inherit" data-count="710339.67" data-decimals="2">710,339.67</span></b></div>
-                <div class="mini mini--b"><span>Customers owe you</span><b class="o2"><small>TT$</small> 21,791.25</b></div>
-                <div class="mini mini--c"><span>Your VAT return</span><b>Worked out for you</b><span>Every box filled in from your books</span></div>
-              </div>
-              <div class="prod__foot">
-                <span class="link-arrow">See VIKI Books <span class="arr">→</span></span>
-                <span class="cta-note">30-day free trial, no card needed</span>
-              </div>
-              <span class="glare" aria-hidden="true"></span>
-            </a>
+        <div class="px__visual">
+          <div class="shotwin">
+            <div class="shotwin__bar"><i></i><i></i><i></i><span>books.vikisystems.live · Taxes</span></div>
+            <img src="assets/img/books-vat.jpg" alt="The VIKI Books VAT return, filled in box by box in the order of the BIR form (sample business)" width="1200" height="675" loading="lazy">
           </div>
-          <div class="tilt-scene reveal">
-            <a class="prod prod--bookings" href="bookings/" data-tilt="6">
-              <span class="prod__bg" aria-hidden="true"></span>
-              <img class="prod__logo" src="assets/img/viki-bookings-logo-white.svg" alt="VIKI Bookings" width="196" height="30">
-              <p class="prod__kick">Hotels and guest houses</p>
-              <p>Bookings, the front desk, the restaurant and bar till, and the monthly reports. Guests book from your own page.</p>
-              <div class="prod__stage" aria-hidden="true">
-                <div class="mini mini--cal">
-                  <div class="mcal">
-                    <div class="mcal__row">Apartment 1<div class="mcal__track"><i style="left:4%;width:38%"></i><i style="left:55%;width:30%"></i></div></div>
-                    <div class="mcal__row">Deluxe 5<div class="mcal__track"><i style="left:20%;width:22%"></i><i class="p" style="left:46%;width:26%"></i></div></div>
-                    <div class="mcal__row">Deluxe 6<div class="mcal__track"><i class="p" style="left:0;width:14%"></i><i style="left:30%;width:44%"></i></div></div>
-                    <div class="mcal__row">Penthouse 9<div class="mcal__track"><i style="left:10%;width:30%"></i><i style="left:62%;width:34%"></i></div></div>
-                  </div>
-                </div>
-                <div class="mini mini--arr"><span>Arriving today</span><b>3</b><span>7 rooms occupied tonight</span></div>
-              </div>
-              <div class="prod__foot">
-                <span class="link-arrow">See VIKI Bookings <span class="arr">→</span></span>
-                <span class="cta-note">TT$1,200 a month, the whole hotel</span>
-              </div>
-              <span class="glare" aria-hidden="true"></span>
-            </a>
+          <div class="px__chip"><b>VAT return</b><span>Every box filled for you</span></div>
+        </div>
+      </article>
+
+      <article class="px px--flip reveal" id="bookings">
+        <div class="px__copy">
+          <img class="px__logo" src="assets/img/viki-bookings-logo-white.svg" alt="VIKI Bookings" width="196" height="30">
+          <h3>Run your whole hotel from one screen.</h3>
+          <p>A booking and reservation system for hotels and guest houses. Rooms, the front desk, the restaurant and bar, and the money, together in one simple system.</p>
+          <ul class="feats">
+            <li><b>Room calendar</b><span>Every room, every day. A room can never be double-booked.</span></li>
+            <li><b>Bookings</b><span>Your own booking page, with the big booking sites' calendars kept in step, and confirmation emails to guests.</span></li>
+            <li><b>Front desk</b><span>Who arrives, who leaves and what needs attention, at a glance.</span></li>
+            <li><b>Restaurant and bar</b><span>Tap a table, tap the items, and the order goes to the kitchen. Pay now, keep a tab, or charge it to the room.</span></li>
+            <li><b>Cash-up</b><span>AM and PM shifts. Staff type only the cash counted, and VIKI shows short or over.</span></li>
+            <li><b>Owners</b><span>A monthly statement for the owners. Day passes, quotations and car rentals too.</span></li>
+          </ul>
+          <p class="px__price"><b>TT$1,200</b>a month for the whole hotel, any number of staff and devices</p>
+          <div class="cta-row">
+            <a class="btn btn--primary" href="bookings/">Explore VIKI Bookings <span class="arr" aria-hidden="true">→</span></a>
+            <a class="btn btn--line" href="https://wa.me/18687877871?text=Hi%2C%20I%27d%20like%20a%20demo%20of%20VIKI%20Bookings%20for%20my%20hotel." target="_blank" rel="noopener">Ask for a demo</a>
           </div>
+        </div>
+        <div class="px__visual">
+          <div class="shotwin">
+            <div class="shotwin__bar"><i></i><i></i><i></i><span>VIKI Bookings · Room calendar</span></div>
+            <img src="assets/img/shot-room-calendar.jpg" alt="The VIKI Bookings room calendar with bookings across every room (sample guest house)" width="1200" height="750" loading="lazy">
+          </div>
+          <div class="px__chip"><b>Room calendar</b><span>Never double-booked</span></div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- CUSTOMERS (quotes approved by each customer, 13 Nov 2026) -->
+  <section class="section section--light quotes" id="customers">
+    <div class="wrap">
+      <div class="sec-head sec-head--center reveal">
+        <p class="eyebrow"><span class="dot"></span>Customers</p>
+        <h2>Businesses already run on VIKI<span class="o">.</span></h2>
+      </div>
+      <div class="quotes__grid stagger">
+        <figure class="quote">
+          <blockquote>“VIKI Books keeps our clients' books, payroll and VAT in one place, set up for Trinidad and Tobago. It saves us time every month.”</blockquote>
+          <figcaption><b>Melvilles' Accounting &amp; Car Leasing Services</b><span>Uses VIKI Books</span></figcaption>
+        </figure>
+        <figure class="quote">
+          <blockquote>“Payroll and VAT used to take us hours. With VIKI Books, NIS, PAYE and the VAT return are worked out for us.”</blockquote>
+          <figcaption><b>KTAL Services Limited</b><span>Uses VIKI Books</span></figcaption>
+        </figure>
+        <figure class="quote quote--bk">
+          <blockquote>“Bookings, the front desk and the cash-up are all in one place now. VIKI Bookings made running our place much simpler.”</blockquote>
+          <figcaption><b>LaVidaTobago</b><span>Uses VIKI Bookings</span></figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE IT: links into the live demos on the product pages -->
+  <section class="section" id="try">
+    <div class="wrap">
+      <div class="sh reveal">
+        <p class="eyebrow"><span class="dot"></span>Try it yourself</p>
+        <h2>Don't read about it<span class="o">.</span> Use it<span class="o">.</span></h2>
+        <p class="lead">Working demos of the real screens, with sample data. Click, type and see what happens.</p>
+      </div>
+      <ol class="try reveal">
+        <li><a href="books/#features"><span><h3>Match a bank statement<span class="tag">VIKI Books</span></h3><p>Accept the matches and watch the difference go to TT$0.00.</p></span><span class="go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a></li>
+        <li><a href="books/#receipts"><span><h3>Read a receipt from a photo<span class="tag">VIKI Books</span></h3><p>See the supplier, date, items and VAT filled in for you.</p></span><span class="go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a></li>
+        <li><a href="bookings/#calendar"><span><h3>Make a booking on the room calendar<span class="tag tag--bk">VIKI Bookings</span></h3><p>Click an empty night, then try to double-book a room.</p></span><span class="go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a></li>
+        <li><a href="bookings/#till"><span><h3>Take an order at the bar<span class="tag tag--bk">VIKI Bookings</span></h3><p>Tap a table, tap the items, and send it to the kitchen.</p></span><span class="go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a></li>
+        <li><a href="bookings/#recon"><span><h3>Count the cash-up<span class="tag tag--bk">VIKI Bookings</span></h3><p>Type the cash in the drawer and see short or over straight away.</p></span><span class="go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a></li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- FOR ACCOUNTING FIRMS -->
+  <section class="section section--light firms" id="firms">
+    <div class="wrap firms__grid">
+      <div class="firms__copy reveal">
+        <p class="eyebrow"><span class="dot"></span>For accounting firms</p>
+        <h2>Every client company on one page<span class="o">.</span></h2>
+        <p class="lead">Each client has its own books, bank and VAT. You see them all together, with combined reports and the access you choose for each person.</p>
+        <ul class="ticks ticks--dark">
+          <li>Combined profit and loss across clients, in TT$</li>
+          <li>Your staff see only the clients you give them</li>
+          <li>Client staff can enter data without seeing the bank, profit or taxes</li>
+          <li>Payroll and VAT done the same way for every client</li>
+        </ul>
+        <div class="firms__price"><b><sup>TT$</sup>79</b><span>a month for each client company<br>every feature included</span></div>
+        <div class="cta-row">
+          <a class="btn btn--primary" href="https://books.vikisystems.live/#/signup">Start a 30-day free trial</a>
+          <a class="btn btn--dark" href="https://wa.me/18687877871?text=Hi%2C%20I%27m%20an%20accountant%20and%20I%27d%20like%20a%20demo%20of%20VIKI%20Books%20for%20my%20firm." target="_blank" rel="noopener">Book a demo for your firm</a>
         </div>
       </div>
-    </section>
+      <div class="firms__shot reveal" aria-label="The combined profit and loss for three client companies in VIKI Books (sample data)" role="img">
+        <div class="shotwin">
+          <div class="shotwin__bar"><i></i><i></i><i></i><span>books.vikisystems.live · Clients</span></div>
+          <img src="assets/img/books-firm.jpg" alt="" width="1200" height="675" loading="lazy">
+        </div>
+        <div class="firms__chip"><b>3 clients</b><span>one combined report</span></div>
+      </div>
+    </div>
+  </section>
 
-    <!-- WHY LOCAL -->
-    <section class="section section--tight">
-      <div class="wrap">
-        <div class="local stagger">
-          <div class="card" data-spot>
-            <div class="ico ico--o"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M14.8 9.2a3 3 0 0 0-2.8-1.7c-1.7 0-3 1-3 2.3 0 3 6 1.6 6 4.5 0 1.3-1.3 2.3-3 2.3a3.2 3.2 0 0 1-3-1.8M12 6v1.5M12 16.5V18"/></svg></div>
-            <h3>In TT dollars</h3>
-            <p>One monthly price in TT dollars, with payroll and VAT included. Every feature is included, and you can try it free for 30 days first.</p>
-          </div>
-          <div class="card" data-spot>
-            <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/><path d="M8 14h3v3H8z"/></svg></div>
-            <h3>Knows the local calendar</h3>
-            <p>It lists every deadline for your business, soonest first, with your BIR numbers beside each one.</p>
-          </div>
-          <div class="card" data-spot>
-            <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 4.5-3.4 8.3-8 9-4.6-.7-8-4.5-8-9V6z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg></div>
-            <h3>Your data is yours</h3>
-            <p>A full copy every night. Download a backup whenever you like, or export everything to one Excel file.</p>
-          </div>
+  <!-- PRICING AT A GLANCE -->
+  <section class="section" id="prices">
+    <div class="wrap">
+      <div class="sh reveal">
+        <p class="eyebrow"><span class="dot"></span>Pricing</p>
+        <h2>One monthly price<span class="o">.</span> Every feature included<span class="o">.</span></h2>
+        <p class="lead">In TT dollars. VIKI Books is free for 30 days first, with no card needed.</p>
+      </div>
+      <div class="pstrip reveal">
+        <div><span class="who">VIKI Books, for a business</span><span class="amt"><sup>TT$</sup>599</span><span class="per">a month for each business</span></div>
+        <div><span class="who">VIKI Books, for accounting firms</span><span class="amt"><sup>TT$</sup>79</span><span class="per">a month for each client company</span></div>
+        <div><span class="who">VIKI Bookings, for hotels</span><span class="amt"><sup>TT$</sup>1,200</span><span class="per">a month, for the whole hotel</span></div>
+      </div>
+      <div class="cta-row reveal"><a class="btn btn--line" href="pricing/">Compare plans and add-ons <span class="arr" aria-hidden="true">→</span></a></div>
+    </div>
+  </section>
+
+  <!-- DEADLINES -->
+  <section class="section section--light" id="deadlines" data-deadlines>
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <p class="eyebrow"><span class="dot"></span>VIKI Books</p>
+        <h2>The dates you keep in your head, kept for you<span class="o">.</span></h2>
+        <p class="lead">VIKI Books knows the Trinidad and Tobago calendar. It lists every deadline for your business, soonest first, with your BIR numbers beside each one.</p>
+      </div>
+      <div class="timeline reveal" aria-hidden="true"><span class="timeline__today">Today</span><span class="timeline__end"></span><div class="timeline__track"></div></div>
+      <div class="dl stagger">
+        <div class="card dl__card" data-kind="monthly" data-day="15" data-short="PAYE and NIS">
+          <div class="dl__big">15<small>every month</small></div>
+          <p>PAYE and health surcharge to the BIR, and NIS to NIBTT, for last month's wages.</p>
+          <span class="dl__count"><span class="dot"></span>Every month</span>
+        </div>
+        <div class="card dl__card">
+          <div class="dl__big">25<small>after each VAT period</small></div>
+          <p>Your VAT return, set out box by box in the order of the BIR form.</p>
+          <span class="dl__count"><span class="dot"></span>Worked out for you</span>
+        </div>
+        <div class="card dl__card" data-kind="date" data-date="2027-01-04" data-since="4 Jan 2027" data-short="NIS change">
+          <div class="dl__big">4 Jan<small>2027</small></div>
+          <p>NIS goes from 16.2% to 19.2%. VIKI Books switches on that date by itself.</p>
+          <span class="dl__count"><span class="dot"></span>4 Jan 2027</span>
+        </div>
+        <div class="card dl__card" data-kind="yearly" data-md="2-28" data-short="TD4s">
+          <div class="dl__big">28 Feb<small>every year</small></div>
+          <p>TD4s for every employee, worked out from the pay runs you posted.</p>
+          <span class="dl__count"><span class="dot"></span>Every year</span>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- DEADLINES -->
-    <section class="section section--light" id="deadlines" data-deadlines>
-      <div class="wrap">
-        <div class="sec-head reveal">
-          <p class="eyebrow"><span class="dot"></span>VIKI Books</p>
-          <h2>The dates you keep in your head, kept for you<span class="o">.</span></h2>
-          <p class="lead">VIKI Books knows the Trinidad and Tobago calendar. It lists every deadline for your business, soonest first, with your BIR numbers beside each one.</p>
-        </div>
-        <div class="timeline reveal" aria-hidden="true"><span class="timeline__today">Today</span><span class="timeline__end"></span><div class="timeline__track"></div></div>
-        <div class="dl stagger">
-          <div class="card dl__card" data-kind="monthly" data-day="15" data-short="PAYE and NIS">
-            <div class="dl__big">15<small>every month</small></div>
-            <p>PAYE and health surcharge to the BIR, and NIS to NIBTT, for last month's wages.</p>
-            <span class="dl__count"><span class="dot"></span>Every month</span>
-          </div>
-          <div class="card dl__card">
-            <div class="dl__big">25<small>after each VAT period</small></div>
-            <p>Your VAT return, set out box by box in the order of the BIR form.</p>
-            <span class="dl__count"><span class="dot"></span>Worked out for you</span>
-          </div>
-          <div class="card dl__card" data-kind="date" data-date="2027-01-04" data-since="4 Jan 2027" data-short="NIS change">
-            <div class="dl__big">4 Jan<small>2027</small></div>
-            <p>NIS goes from 16.2% to 19.2%. VIKI Books switches on that date by itself.</p>
-            <span class="dl__count"><span class="dot"></span>4 Jan 2027</span>
-          </div>
-          <div class="card dl__card" data-kind="yearly" data-md="2-28" data-short="TD4s">
-            <div class="dl__big">28 Feb<small>every year</small></div>
-            <p>TD4s for every employee, worked out from the pay runs you posted.</p>
-            <span class="dl__count"><span class="dot"></span>Every year</span>
-          </div>
-        </div>
+  <!-- TRUST SUMMARY -->
+  <section class="section" id="trust">
+    <div class="wrap ts">
+      <div class="reveal">
+        <p class="eyebrow"><span class="dot"></span>Trust and security</p>
+        <h2>Your data is yours<span class="o">.</span></h2>
+        <p class="lead" style="margin-top:18px">What we do to keep it safe, in plain words.</p>
+        <div class="cta-row"><a class="btn btn--line" href="trust/">How we look after your data <span class="arr" aria-hidden="true">→</span></a></div>
       </div>
-    </section>
+      <ul class="reveal">
+        <li><b>Backed up automatically</b><span>VIKI Books copies your books every night and keeps each copy for 30 days. VIKI Bookings backs up every hour.</span></li>
+        <li><b>Take it with you any time</b><span>Download a backup of your books, or export everything to one Excel file, whenever you like.</span></li>
+        <li><b>Each person sees only their part</b><span>Everyone has their own sign-in. Data entry staff never see your bank, profit, reports or taxes.</span></li>
+        <li><b>Every change is recorded</b><span>The audit trail shows who changed what, when, and the value before and after. Nobody can edit it.</span></li>
+      </ul>
+    </div>
+  </section>
 
-    <!-- PRICES AT A GLANCE -->
-    <section class="section" id="prices">
-      <div class="wrap">
-        <div class="sec-head reveal">
-          <p class="eyebrow"><span class="dot"></span>Prices</p>
-          <h2>Simple monthly prices, in TT dollars<span class="o">.</span></h2>
-          <p class="lead">Every feature is included. VIKI Books is free for 30 days first, with no card needed.</p>
-        </div>
-        <div class="pricegrid stagger">
-          <div class="card pricecell"><span>VIKI Books, for a business</span><b><sup>TT$</sup>599</b><small>a month for each business</small><a class="link-arrow" href="books/#prices">Details <span class="arr">→</span></a></div>
-          <div class="card pricecell"><span>VIKI Books, for accounting firms</span><b><sup>TT$</sup>79</b><small>a month for each client company</small><a class="link-arrow" href="books/#prices">Details <span class="arr">→</span></a></div>
-          <div class="card pricecell"><span>VIKI Bookings, for hotels</span><b><sup>TT$</sup>1,200</b><small>a month, for the whole hotel</small><a class="link-arrow" href="bookings/#price">Details <span class="arr">→</span></a></div>
-        </div>
+  <!-- CLOSING -->
+  <section class="final">
+    <div class="wrap reveal">
+      <h2 class="ink">Run your business on VIKI<span class="o">.</span></h2>
+      <p class="lead">Try VIKI Books free for 30 days, or book a 15-minute demo of either system with a person here in Trinidad and Tobago.</p>
+      <div class="cta-row">
+        <a class="btn btn--primary" href="https://books.vikisystems.live/#/signup">Start a 30-day free trial</a>
+        <a class="btn btn--line" href="contact/">Book a demo</a>
       </div>
-    </section>
-
-    <!-- CONTACT -->
-    <section class="section" id="contact">
-      <div class="wrap contact">
-        <div class="reveal">
-          <p class="eyebrow"><span class="dot"></span>Contact</p>
-          <h2>Talk to a person, here in Trinidad and Tobago<span class="o">.</span></h2>
-          <p class="lead" style="margin-top:16px">Questions about VIKI Books or VIKI Bookings? Message us and we will answer honestly, including what will and will not come across from your old system.</p>
-          <div class="contact__ways">
-            <a class="way" href="https://wa.me/18687877871" target="_blank" rel="noopener">
-              <span class="way__icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.3c0-.1-.2-.2-.5-.3z"/></svg></span>
-              <span><b>WhatsApp 1-868-787-7871</b><small>Message us any time</small></span>
-              <span class="pill">Fastest</span>
-            </a>
-            <a class="way" href="mailto:vikisystem.live@gmail.com">
-              <span class="way__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M3.5 7l8.5 6 8.5-6"/></svg></span>
-              <span><b>vikisystem.live@gmail.com</b><small>Email</small></span>
-            </a>
-          </div>
-        </div>
-        <form class="glass form reveal" data-mailform novalidate>
-          <div class="form__row">
-            <div class="field"><label for="f-name">Your name</label><input class="input" id="f-name" name="name" autocomplete="name" required></div>
-            <div class="field"><label for="f-biz">Business</label><input class="input" id="f-biz" name="business" autocomplete="organization"></div>
-          </div>
-          <div class="form__row">
-            <div class="field"><label for="f-prod">Interested in</label>
-              <select class="input" id="f-prod" name="product"><option>VIKI Books</option><option>VIKI Bookings</option><option>Both</option><option>Not sure yet</option></select></div>
-            <div class="field"><label for="f-phone">Phone (optional)</label><input class="input" id="f-phone" name="phone" type="tel" autocomplete="tel"></div>
-          </div>
-          <div class="field"><label for="f-msg">Message</label><textarea class="input" id="f-msg" name="message" required placeholder="Tell us a little about your business"></textarea></div>
-          <div class="form__actions">
-            <button class="btn btn--primary" type="submit">Send by email</button>
-            <button class="btn btn--ghost" type="button" data-wa>Send on WhatsApp</button>
-          </div>
-          <div class="form__done" role="status">
-            <div class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg></div>
-            <h3>Your message is ready to send</h3>
-            <p class="lead" style="margin:10px auto 22px">Your email or WhatsApp opened with everything filled in. Press send there and it reaches us.</p>
-            <button class="btn btn--ghost btn--sm" type="button" data-again>Write another</button>
-          </div>
-        </form>
-      </div>
-    </section>
-  </div>
+    </div>
+  </section>
 </main>
 
 <footer class="footer">
   <div class="wrap">
-    <div class="footer__in">
+    <div class="fx4">
       <div>
         <img src="assets/img/viki-systems-logo-white.svg" alt="viki.systems" width="140" height="27">
-        <p class="fine" style="max-width:360px">Software for Trinidad and Tobago businesses. Made here, for the way businesses here work.</p>
+        <p class="fine">Software that simplifies how businesses run. Made in Trinidad and Tobago.</p>
       </div>
-      <div>
-        <h4>Products</h4>
-        <ul><li><a href="books/">VIKI Books</a></li><li><a href="bookings/">VIKI Bookings</a></li><li><a href="https://books.vikisystems.live/">Sign in to VIKI Books</a></li></ul>
-      </div>
-      <div>
-        <h4>Contact</h4>
-        <ul><li><a href="https://wa.me/18687877871" target="_blank" rel="noopener">WhatsApp 1-868-787-7871</a></li><li><a href="mailto:vikisystem.live@gmail.com">vikisystem.live@gmail.com</a></li><li><a href="books/privacy.html">Privacy</a></li><li><a href="books/terms.html">Terms</a></li></ul>
-      </div>
+      <div><h4>Products</h4><ul><li><a href="books/">VIKI Books</a></li><li><a href="bookings/">VIKI Bookings</a></li><li><a href="pricing/">Pricing</a></li><li><a href="https://books.vikisystems.live/">Sign in to VIKI Books</a></li></ul></div>
+      <div><h4>Company</h4><ul><li><a href="about/">About VIKI Systems</a></li><li><a href="trust/">Trust and security</a></li><li><a href="contact/">Contact</a></li></ul></div>
+      <div><h4>Talk to us</h4><ul><li><a href="https://wa.me/18687877871" target="_blank" rel="noopener">WhatsApp 1-868-787-7871</a></li><li><a href="mailto:info@vikisystems.live">info@vikisystems.live</a></li><li><a href="books/privacy.html">Privacy</a></li><li><a href="books/terms.html">Terms</a></li></ul></div>
     </div>
     <div class="footer__base"><span>© <span data-year>2026</span> VIKI Systems, Trinidad and Tobago</span><span>Made in Trinidad and Tobago</span></div>
   </div>
 </footer>
 
-<script src="main.js?v=20261112b"></script>
-<script src="home.js?v=20261112d"></script>
+<script src="main.js?v=20261113d"></script>
+<script src="stage.js?v=20261113d"></script>
+<script src="site.js?v=20261113d"></script>
 </body>
 </html>

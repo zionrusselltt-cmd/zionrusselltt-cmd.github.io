@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>VIKI Bookings | Run your whole hotel from one screen</title>
 <meta name="description" content="Rooms, restaurant, bar and money in one simple system. Bookings, the front desk, the till and the recon for hotels and guest houses. Made in Trinidad and Tobago. TT$1,200 a month for the whole hotel.">
-<meta name="theme-color" content="#0F1430">
+<meta name="theme-color" content="#0A0B0E">
 <meta property="og:type" content="website">
 <meta property="og:title" content="VIKI Bookings | Run your whole hotel from one screen">
 <meta property="og:description" content="Rooms, restaurant, bar and money in one simple system. Built in Trinidad and Tobago.">
@@ -15,8 +15,10 @@
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%231B2140'/%3E%3Cpath d='M8 9h4.2l3.8 10.6L19.8 9H24l-6 15h-4z' fill='%23fff'/%3E%3Ccircle cx='24.5' cy='24.5' r='3.2' fill='%23FF7A45'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../style.css?v=20261112b">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@500;600;700&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css?v=20261113d">
+<link rel="stylesheet" href="../stage.css?v=20261113d">
+<link rel="stylesheet" href="../site.css?v=20261113d">
 <script>document.documentElement.classList.add("js")</script>
 </head>
 <body class="subpage bookings">
@@ -24,30 +26,29 @@
 
 <header class="nav">
   <div class="wrap nav__in">
-    <a class="nav__logo" href="#top" aria-label="VIKI Bookings, back to top"><img src="../assets/img/viki-bookings-logo-white.svg" alt="viki.bookings" width="196" height="30"></a>
-    <nav class="nav__links" aria-label="VIKI Bookings">
-      <a href="#what">What it does</a>
-      <a href="#frontdesk">Front desk</a>
-      <a href="#calendar">Calendar</a>
-      <a href="#till">Restaurant and bar</a>
-      <a href="#recon">Recon</a>
-      <a href="#price">Price</a>
-      <a href="#contact">Contact</a>
+    <a class="nav__logo" href="../" aria-label="VIKI Systems home"><img src="../assets/img/viki-systems-logo-white.svg" alt="viki.systems" width="140" height="27"></a>
+    <nav class="nav__links" aria-label="Main">
+      <a href="../books/">VIKI Books</a>
+      <a href="../bookings/">VIKI Bookings</a>
+      <a href="../pricing/">Pricing</a>
+      <a href="../trust/">Trust</a>
+      <a href="../about/">About</a>
+      <a href="../contact/">Contact</a>
     </nav>
     <div class="nav__cta">
-      <a class="btn btn--primary btn--sm" href="https://wa.me/18687877871?text=Hi%2C%20I%27d%20like%20a%20demo%20of%20VIKI%20Bookings%20for%20my%20hotel." target="_blank" rel="noopener">Ask for a demo</a>
+      <a class="btn btn--line btn--sm" href="https://books.vikisystems.live/">Sign in</a>
+      <a class="btn btn--primary btn--sm" href="../pricing/">Get started</a>
     </div>
     <button class="nav__burger" aria-label="Open menu" aria-expanded="false" aria-controls="menu"><span></span></button>
     <div class="nav__menu" id="menu">
-      <a href="#what">What it does</a>
-      <a href="#frontdesk">Front desk</a>
-      <a href="#calendar">Calendar</a>
-      <a href="#till">Restaurant and bar</a>
-      <a href="#recon">Recon</a>
-      <a href="#price">Price</a>
-      <a href="#contact">Contact</a>
-      <a href="../">VIKI Systems home</a>
-      <a class="btn btn--primary" href="https://wa.me/18687877871?text=Hi%2C%20I%27d%20like%20a%20demo%20of%20VIKI%20Bookings%20for%20my%20hotel." target="_blank" rel="noopener">Ask for a demo on WhatsApp</a>
+      <a href="../books/">VIKI Books</a>
+      <a href="../bookings/">VIKI Bookings</a>
+      <a href="../pricing/">Pricing</a>
+      <a href="../trust/">Trust and security</a>
+      <a href="../about/">About VIKI Systems</a>
+      <a href="../contact/">Contact</a>
+      <a class="btn btn--line" href="https://books.vikisystems.live/">Sign in to VIKI Books</a>
+      <a class="btn btn--primary" href="../pricing/">Get started</a>
     </div>
   </div>
 </header>
@@ -67,38 +68,28 @@
           <a class="btn btn--ghost" href="#calendar">Try the room calendar</a>
         </div>
         <p class="cta-note" style="margin-top:14px">TT$1,200 a month for the whole hotel. Any number of staff and devices.</p>
-      </div>
-
-      <div class="hero3d tilt-scene reveal" id="hero3d" role="img" aria-label="The VIKI Bookings front desk: 3 arriving today, 1 leaving, 7 rooms occupied tonight, and a list of what needs attention">
-        <div class="device p3d" data-tilt="7" data-rx="6" data-ry="-14">
-          <div class="device__bar"><i></i><i></i><i></i><span>your-hotel.vikisystems.live</span></div>
-          <div class="device__screen app app--bk p3d">
-            <div class="app__top">
-              <span class="app__logo">viki<i>.</i>bookings</span>
-              <span class="app__co"><span>S</span>Sea Breeze Guest House</span>
-              <span class="app__tabs"><span class="on">Today</span><span>Calendar</span><span>Bookings</span><span>Guests</span><span>Till</span><span>Recon</span></span>
-              <span class="app__new" style="background:#0F7B6C">New booking</span>
-            </div>
-            <div class="app__body p3d">
-              <p class="fd__hello pop" style="--k:.5">Good evening</p>
-              <p class="app__muted" style="font-size:11px">Thu, 5 Nov 2026 · Sea Breeze Guest House</p>
-              <div class="fd__stats p3d">
-                <div class="fd__stat pop" style="--k:1.8"><i style="background:#2BC46A"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 17l5-5-5-5M15 12H3M14 3h5a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-5"/></svg></i><span><b>3</b>arriving today</span></div>
-                <div class="fd__stat pop" style="--k:2.4"><i style="background:#FF9A1F"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h5M16 17l5-5-5-5M21 12H9"/></svg></i><span><b>1</b>leaving today</span></div>
-                <div class="fd__stat pop" style="--k:1.4"><i style="background:#3D7BFF"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18V8M3 14h18v4M21 14v-2a3 3 0 0 0-3-3h-7v5"/><circle cx="7" cy="11" r="2"/></svg></i><span><b>7</b>rooms occupied tonight</span></div>
-              </div>
-              <div class="fd__att pop" style="--k:.9">
-                <h6>Needs attention</h6>
-                <div><em>17</em>booking requests to confirm or decline</div>
-                <div><em>23</em>payments to check in the bank (TT$36,392.00)</div>
-                <div><em class="r">34</em>guests have left with money still owing (past year)</div>
-                <div><em>4</em>open restaurant or bar tabs not paid yet (TT$1,330.00)</div>
-              </div>
-            </div>
-          </div>
-          <span class="glare" aria-hidden="true"></span>
+        <div class="usedby">
+          <span class="usedby__k">Already running on VIKI Bookings</span>
+          <ul><li>LaVidaTobago</li></ul>
         </div>
       </div>
+
+      <div class="reveal">
+        <div class="vs-stage" data-vs="bookings" role="img" aria-label="VIKI Bookings at work: a guest is checked in, the counts update, and a booking from the hotel's own page is confirmed with an email to the guest">
+          <img class="vs-fallback" src="../assets/img/shot-front-desk.jpg" alt="" width="1200" height="750">
+        </div>
+        <p class="hero__cap">The real VIKI Bookings front desk, acted out. Sample guest house.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CUSTOMER (quote approved by the customer, 13 Nov 2026) -->
+  <section class="section section--light quotes section--tight" id="customers">
+    <div class="wrap">
+      <figure class="quote quote--solo quote--bk reveal">
+        <blockquote>“Bookings, the front desk and the cash-up are all in one place now. VIKI Bookings made running our place much simpler.”</blockquote>
+        <figcaption><b>LaVidaTobago</b><span>Uses VIKI Bookings</span></figcaption>
+      </figure>
     </div>
   </section>
 
@@ -410,6 +401,25 @@
     </div>
   </section>
 
+  <!-- FAQ -->
+  <section class="section section--light" id="faq">
+    <div class="wrap faq">
+      <div class="sec-head reveal">
+        <p class="eyebrow"><span class="dot"></span>Questions</p>
+        <h2>What hotel owners ask first<span class="o">.</span></h2>
+        <p class="lead">Ask anything else on WhatsApp, or book a demo and see it with your own rooms.</p>
+      </div>
+      <div class="faq__list reveal">
+        <details open><summary>How much does it cost?</summary><p>TT$1,200 a month for the whole hotel or guest house. Any number of staff and devices, with rooms, restaurant, bar, recon, your own booking page, guest emails, backups, updates and WhatsApp support included.</p></details>
+        <details><summary>Who sets it up?</summary><p>We do. Your rooms, prices, menu and logo go in first, your staff practise on a practice hotel at their own pace, then you go live.</p></details>
+        <details><summary>Do I need to install anything?</summary><p>No. It works on a computer, tablet or phone, with nothing to install.</p></details>
+        <details><summary>Will I still get bookings from the big booking sites?</summary><p>Yes. Their calendars are kept in step with VIKI, and guests can also book from your own booking page. A room can never be double-booked.</p></details>
+        <details><summary>We are a small guest house with no restaurant. Is it still for us?</summary><p>Yes. VIKI Bookings is made for hotels and guest houses of every size. The restaurant and bar till is there if you run one.</p></details>
+        <details><summary>Is our information kept private?</summary><p>Each hotel has its own copy of VIKI at its own address, kept apart from every other hotel. It is backed up every hour, and every person signs in with their own login.</p></details>
+      </div>
+    </div>
+  </section>
+
   <!-- CONTACT -->
   <section class="section" id="contact">
     <div class="wrap contact">
@@ -422,9 +432,9 @@
             <span><b>WhatsApp 1-868-787-7871</b><small>Ask for a demo</small></span>
             <span class="pill">Fastest</span>
           </a>
-          <a class="way" href="mailto:vikisystem.live@gmail.com">
+          <a class="way" href="mailto:info@vikisystems.live">
             <span class="way__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M3.5 7l8.5 6 8.5-6"/></svg></span>
-            <span><b>vikisystem.live@gmail.com</b><small>Email</small></span>
+            <span><b>info@vikisystems.live</b><small>Email</small></span>
           </a>
         </div>
       </div>
@@ -455,25 +465,22 @@
 
 <footer class="footer">
   <div class="wrap">
-    <div class="footer__in">
+    <div class="fx4">
       <div>
-        <img src="../assets/img/viki-bookings-logo-white.svg" alt="viki.bookings" width="196" height="30">
-        <p class="fine" style="max-width:360px">The hotel and guest house system. Made in Trinidad and Tobago by VIKI Systems.</p>
+        <img src="../assets/img/viki-systems-logo-white.svg" alt="viki.systems" width="140" height="27">
+        <p class="fine">Software that simplifies how businesses run. Made in Trinidad and Tobago.</p>
       </div>
-      <div>
-        <h4>VIKI Systems</h4>
-        <ul><li><a href="../">VIKI Systems home</a></li><li><a href="../books/">VIKI Books</a></li></ul>
-      </div>
-      <div>
-        <h4>Contact</h4>
-        <ul><li><a href="https://wa.me/18687877871" target="_blank" rel="noopener">WhatsApp 1-868-787-7871</a></li><li><a href="mailto:vikisystem.live@gmail.com">vikisystem.live@gmail.com</a></li></ul>
-      </div>
+      <div><h4>Products</h4><ul><li><a href="../books/">VIKI Books</a></li><li><a href="../bookings/">VIKI Bookings</a></li><li><a href="../pricing/">Pricing</a></li><li><a href="https://books.vikisystems.live/">Sign in to VIKI Books</a></li></ul></div>
+      <div><h4>Company</h4><ul><li><a href="../about/">About VIKI Systems</a></li><li><a href="../trust/">Trust and security</a></li><li><a href="../contact/">Contact</a></li></ul></div>
+      <div><h4>Talk to us</h4><ul><li><a href="https://wa.me/18687877871" target="_blank" rel="noopener">WhatsApp 1-868-787-7871</a></li><li><a href="mailto:info@vikisystems.live">info@vikisystems.live</a></li><li><a href="../books/privacy.html">Privacy</a></li><li><a href="../books/terms.html">Terms</a></li></ul></div>
     </div>
     <div class="footer__base"><span>© <span data-year>2026</span> VIKI Systems, Trinidad and Tobago</span><span>Made in Trinidad and Tobago</span></div>
   </div>
 </footer>
 
-<script src="../main.js?v=20261112b"></script>
+<script src="../main.js?v=20261113d"></script>
+<script src="../site.js?v=20261113d"></script>
+<script src="../stage.js?v=20261113d"></script>
 <script src="bookings.js?v=20261112b"></script>
 </body>
 </html>
