@@ -14,7 +14,12 @@
 .ptile::after { content: ""; position: absolute; top: 0; bottom: 0; right: 63px; width: 10px; background: linear-gradient(90deg, #D92A3D, #B5162B); opacity: .9; pointer-events: none; z-index: 0; }
 .ptile > * { position: relative; z-index: 1; }
 .ptile .bow { z-index: 2; position: absolute; }
-@media (max-width: 767px) { .ptile .bow { width: 72px; right: 14px; } .ptile::after { right: 46px; width: 8px; } }
+/* phones: the ribbon wraps across the top of the card like a gift box, and the bow sits centred above the logo, clear of every word */
+@media (max-width: 767px) {
+  .ptile { padding-top: 74px; }
+  .ptile::after { top: 22px; bottom: auto; left: 0; right: 0; width: auto; height: 8px; background: linear-gradient(180deg, #D92A3D, #B5162B); }
+  .ptile .bow { top: 2px; left: 50%; right: auto; width: 72px; transform: translateX(-50%); }
+}
 
 /* 4. small twinkling lights under the green banner */
 .xlights { position: relative; height: 20px; margin-bottom: -20px; z-index: 101; display: flex; justify-content: center; overflow: hidden; pointer-events: none;
